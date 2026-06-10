@@ -1,0 +1,837 @@
+2026-06-09 21:57:10	[INFO]	数据库连接成功
+2026-06-09 21:57:10	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 21:57:10	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 21:57:10	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 21:57:10	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 21:57:10	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 21:57:10	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 21:57:10	[INFO]	正在更新公网ip
+2026-06-09 21:59:16	[INFO]	数据库连接成功
+2026-06-09 21:59:16	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 21:59:16	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 21:59:16	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 21:59:16	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 21:59:16	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 21:59:16	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 21:59:16	[INFO]	正在更新公网ip
+2026-06-09 21:59:50	[INFO]	数据库连接成功
+2026-06-09 21:59:50	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 21:59:50	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 21:59:50	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 21:59:50	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 21:59:50	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 21:59:50	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 21:59:50	[INFO]	正在更新公网ip
+2026-06-09 22:01:39	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:01:46	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:01:47	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:01:58	[WARN]	登录频率过高, IP: ::1
+2026-06-09 22:03:11	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:03:26	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:03:28	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:03:36	[ERROR]	创建bcrypt密码失败：bcrypt: password length exceeds 72 bytes
+2026-06-09 22:07:54	[INFO]	数据库连接成功
+2026-06-09 22:07:54	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:07:54	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:07:54	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:07:54	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:07:54	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:07:54	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:07:55	[INFO]	正在更新公网ip
+2026-06-09 22:08:21	[ERROR]	获取游戏版本失败, err: open dst/version.txt: no such file or directory
+2026-06-09 22:08:28	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-09 22:08:32	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-09 22:08:32	[ERROR]	获取游戏版本失败, err: open dst/version.txt: no such file or directory
+2026-06-09 22:10:54	[INFO]	数据库连接成功
+2026-06-09 22:10:54	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:10:54	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:10:54	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:10:54	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:10:54	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:10:54	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:10:54	[INFO]	正在更新公网ip
+2026-06-09 22:10:56	[ERROR]	获取游戏版本失败, err: open dst/version.txt: no such file or directory
+2026-06-09 22:10:57	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-09 22:11:01	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-09 22:11:01	[ERROR]	获取游戏版本失败, err: open dst/version.txt: no such file or directory
+2026-06-09 22:11:02	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-09 22:11:30	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-09 22:11:30	[ERROR]	获取游戏版本失败, err: open dst/version.txt: no such file or directory
+2026-06-09 22:11:32	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-09 22:11:38	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-09 22:11:39	[ERROR]	获取游戏版本失败, err: open dst/version.txt: no such file or directory
+2026-06-09 22:19:46	[INFO]	数据库连接成功
+2026-06-09 22:19:46	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:19:46	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:19:46	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:19:46	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:19:46	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:19:46	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:19:47	[INFO]	正在更新公网ip
+2026-06-09 22:19:52	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-09 22:19:55	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-09 22:22:06	[INFO]	数据库连接成功
+2026-06-09 22:22:06	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:22:06	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:22:06	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:22:06	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:22:06	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:22:06	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:22:07	[INFO]	正在更新公网ip
+2026-06-09 22:33:57	[INFO]	数据库连接成功
+2026-06-09 22:33:57	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:33:57	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:33:57	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:33:57	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:33:57	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:33:57	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:33:57	[INFO]	正在更新公网ip
+2026-06-09 22:37:26	[ERROR]	创建文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/adminlist.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/adminlist.txt
+2026-06-09 22:37:26	[ERROR]	创建文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/whitelist.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/whitelist.txt
+2026-06-09 22:37:26	[ERROR]	创建文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/blocklist.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/blocklist.txt
+2026-06-09 22:37:26	[ERROR]	获取日志信息失败，无法判断，跳过, err: 世界不存在: 1, world: 1
+2026-06-09 22:37:26	[ERROR]	获取日志信息失败，无法判断，跳过, err: 世界不存在: 2, world: 2
+2026-06-09 22:37:42	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:37:42	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:37:45	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:37:45	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:37:55	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:37:55	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:38:05	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:38:05	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:38:15	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:38:15	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:38:47	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:38:47	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:38:57	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744": invalid syntax
+2026-06-09 22:38:57	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752": invalid syntax
+2026-06-09 22:39:02	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744\n46079\n46083": invalid syntax
+2026-06-09 22:39:02	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752\n46087\n46092": invalid syntax
+2026-06-09 22:39:07	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744\n46079\n46083": invalid syntax
+2026-06-09 22:39:07	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752\n46087\n46092": invalid syntax
+2026-06-09 22:39:15	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744\n46079\n46083": invalid syntax
+2026-06-09 22:39:16	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752\n46087\n46092": invalid syntax
+2026-06-09 22:39:19	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:39:19	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 22:39:19	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744\n46079\n46083": invalid syntax
+2026-06-09 22:39:19	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752\n46087\n46092": invalid syntax
+2026-06-09 22:39:26	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744\n46079\n46083": invalid syntax
+2026-06-09 22:39:26	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752\n46087\n46092": invalid syntax
+2026-06-09 22:39:27	[WARN]	获取世界PID失败, id: 1, err: strconv.Atoi: parsing "45740\n45744\n46079\n46083": invalid syntax
+2026-06-09 22:39:27	[WARN]	获取世界PID失败, id: 2, err: strconv.Atoi: parsing "45748\n45752\n46087\n46092": invalid syntax
+2026-06-09 22:50:24	[INFO]	数据库连接成功
+2026-06-09 22:50:24	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[1-0-Backup]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[1-BackupClean]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[1-Restart]注册成功
+2026-06-09 22:50:24	[INFO]	定时任务[1-Keepalive]注册成功
+2026-06-09 22:50:24	[INFO]	正在更新公网ip
+2026-06-09 22:50:25	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt
+2026-06-09 22:50:25	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, world: 1
+2026-06-09 22:50:26	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt
+2026-06-09 22:50:26	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, world: 2
+2026-06-09 22:50:38	[WARN]	获取世界CPU失败, world: 1, err: operation not permitted
+2026-06-09 22:50:38	[WARN]	获取世界CPU失败, world: 2, err: operation not permitted
+2026-06-09 22:50:42	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:50:42	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 22:50:42	[WARN]	获取世界CPU失败, world: 1, err: operation not permitted
+2026-06-09 22:50:43	[WARN]	获取世界CPU失败, world: 2, err: operation not permitted
+2026-06-09 22:50:47	[WARN]	获取世界CPU失败, world: 1, err: operation not permitted
+2026-06-09 22:50:47	[WARN]	获取世界CPU失败, world: 2, err: operation not permitted
+2026-06-09 22:51:19	[INFO]	数据库连接成功
+2026-06-09 22:51:19	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[1-0-Backup]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[1-BackupClean]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[1-Restart]注册成功
+2026-06-09 22:51:19	[INFO]	定时任务[1-Keepalive]注册成功
+2026-06-09 22:51:19	[INFO]	正在更新公网ip
+2026-06-09 22:51:20	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt
+2026-06-09 22:51:20	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, world: 1
+2026-06-09 22:51:21	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt
+2026-06-09 22:51:21	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, world: 2
+2026-06-09 22:51:32	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:51:32	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 22:52:19	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 22:52:20	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 22:52:20	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 22:52:21	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 22:52:25	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 22:52:26	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 22:52:26	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 22:52:27	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 22:52:28	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:52:28	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 22:52:31	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:52:31	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 22:57:22	[INFO]	数据库连接成功
+2026-06-09 22:57:22	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[1-0-Backup]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[1-BackupClean]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[1-Restart]注册成功
+2026-06-09 22:57:22	[INFO]	定时任务[1-Keepalive]注册成功
+2026-06-09 22:57:22	[INFO]	正在更新公网ip
+2026-06-09 22:57:23	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt
+2026-06-09 22:57:23	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, world: 1
+2026-06-09 22:57:24	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt
+2026-06-09 22:57:24	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, world: 2
+2026-06-09 22:57:33	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 22:57:34	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 22:57:34	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 22:57:35	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 22:57:35	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:57:35	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 22:57:38	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 22:57:38	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 23:00:22	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:00:23	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:00:23	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:00:24	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:00:26	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 23:00:26	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 23:00:27	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt
+2026-06-09 23:00:27	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, world: 1
+2026-06-09 23:00:28	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt
+2026-06-09 23:00:28	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, world: 2
+2026-06-09 23:00:31	[INFO]	当前世界正在运行中，跳过，世界ID：1
+2026-06-09 23:00:31	[INFO]	当前世界正在运行中，跳过，世界ID：2
+2026-06-09 23:01:14	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt
+2026-06-09 23:01:14	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Master/server_log.txt: no such file or directory, world: 3
+2026-06-09 23:01:15	[ERROR]	打开文件失败, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, file: /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt
+2026-06-09 23:01:15	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/.klei/DoNotStarveTogether/Cluster_1/Caves/server_log.txt: no such file or directory, world: 4
+2026-06-09 23:01:23	[INFO]	当前世界正在运行中，跳过，世界ID：3
+2026-06-09 23:01:23	[INFO]	当前世界正在运行中，跳过，世界ID：4
+2026-06-09 23:22:24	[INFO]	数据库连接成功
+2026-06-09 23:22:24	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[1-0-Backup]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[1-BackupClean]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[1-Restart]注册成功
+2026-06-09 23:22:24	[INFO]	定时任务[1-Keepalive]注册成功
+2026-06-09 23:22:24	[INFO]	正在更新公网ip
+2026-06-09 23:22:31	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:22:32	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:22:32	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:22:33	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:22:35	[ERROR]	发现世界运行异常，即将执行重启操作, world: 3
+2026-06-09 23:22:37	[ERROR]	发现世界运行异常，即将执行重启操作, world: 4
+2026-06-09 23:22:39	[INFO]	当前世界正在运行中，跳过，世界ID：3
+2026-06-09 23:22:39	[INFO]	当前世界正在运行中，跳过，世界ID：4
+2026-06-09 23:22:49	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:22:50	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:22:50	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:22:51	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:30:49	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:34:22	[INFO]	运行平台: darwin/arm64
+2026-06-09 23:34:22	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-09 23:34:22	[INFO]	DST配置目录权限检查通过
+2026-06-09 23:34:22	[INFO]	数据库连接成功
+2026-06-09 23:34:22	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[1-0-Backup]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[1-BackupClean]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[1-Restart]注册成功
+2026-06-09 23:34:22	[INFO]	定时任务[1-Keepalive]注册成功
+2026-06-09 23:34:23	[ERROR]	发现世界运行异常，即将执行重启操作, world: 3
+2026-06-09 23:34:23	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:34:24	[INFO]	正在更新公网ip
+2026-06-09 23:34:24	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:34:25	[ERROR]	发现世界运行异常，即将执行重启操作, world: 4
+2026-06-09 23:34:25	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:34:30	[INFO]	运行平台: darwin/arm64
+2026-06-09 23:34:30	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-09 23:34:30	[INFO]	DST配置目录权限检查通过
+2026-06-09 23:34:30	[INFO]	数据库连接成功
+2026-06-09 23:34:30	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[1-0-Backup]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[1-BackupClean]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[1-Restart]注册成功
+2026-06-09 23:34:30	[INFO]	定时任务[1-Keepalive]注册成功
+2026-06-09 23:34:30	[INFO]	正在更新公网ip
+2026-06-09 23:34:31	[ERROR]	发现世界运行异常，即将执行重启操作, world: 3
+2026-06-09 23:34:31	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:34:32	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:34:33	[ERROR]	发现世界运行异常，即将执行重启操作, world: 4
+2026-06-09 23:34:33	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:34:34	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:34:48	[ERROR]	启动失败：拒绝写入空文件: dst/mods/dedicated_server_mods_setup.lua
+2026-06-09 23:34:50	[ERROR]	启动失败：拒绝写入空文件: dst/mods/dedicated_server_mods_setup.lua
+2026-06-09 23:34:51	[ERROR]	启动失败：拒绝写入空文件: dst/mods/dedicated_server_mods_setup.lua
+2026-06-09 23:34:56	[ERROR]	启动失败：拒绝写入空文件: dst/mods/dedicated_server_mods_setup.lua
+2026-06-09 23:35:34	[ERROR]	发现世界运行异常，即将执行重启操作, world: 5
+2026-06-09 23:35:34	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:35:35	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:35:36	[ERROR]	发现世界运行异常，即将执行重启操作, world: 6
+2026-06-09 23:35:36	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:35:37	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:35:37	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:35:38	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:35:38	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:35:39	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:35:41	[ERROR]	发现世界运行异常，即将执行重启操作, world: 5
+2026-06-09 23:35:41	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:35:42	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:35:43	[ERROR]	发现世界运行异常，即将执行重启操作, world: 6
+2026-06-09 23:35:43	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:35:44	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:35:45	[ERROR]	启动失败：拒绝写入空文件: dst/mods/dedicated_server_mods_setup.lua
+2026-06-09 23:36:06	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:36:07	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:36:07	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:36:08	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:37:20	[ERROR]	创建文件失败, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/adminlist.txt: no such file or directory, file: /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/adminlist.txt
+2026-06-09 23:37:20	[ERROR]	创建文件失败, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/whitelist.txt: no such file or directory, file: /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/whitelist.txt
+2026-06-09 23:37:20	[ERROR]	创建文件失败, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/blocklist.txt: no such file or directory, file: /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/blocklist.txt
+2026-06-09 23:37:20	[ERROR]	获取日志信息失败，无法判断，跳过, err: 世界不存在: 7, world: 7
+2026-06-09 23:37:20	[ERROR]	获取日志信息失败，无法判断，跳过, err: 世界不存在: 8, world: 8
+2026-06-09 23:37:26	[ERROR]	启动失败：拒绝写入空文件: dst/mods/dedicated_server_mods_setup.lua
+2026-06-09 23:44:36	[INFO]	运行平台: darwin/arm64
+2026-06-09 23:44:36	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-09 23:44:36	[INFO]	DST配置目录权限检查通过
+2026-06-09 23:44:36	[INFO]	数据库连接成功
+2026-06-09 23:44:36	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[2-Restart]注册成功
+2026-06-09 23:44:36	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-09 23:44:36	[INFO]	正在更新公网ip
+2026-06-09 23:44:37	[ERROR]	打开文件失败, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Master/server_log.txt: no such file or directory, file: /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Master/server_log.txt
+2026-06-09 23:44:37	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Master/server_log.txt: no such file or directory, world: 7
+2026-06-09 23:44:38	[ERROR]	打开文件失败, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Caves/server_log.txt: no such file or directory, file: /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Caves/server_log.txt
+2026-06-09 23:44:38	[ERROR]	获取日志信息失败，无法判断，跳过, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Caves/server_log.txt: no such file or directory, world: 8
+2026-06-09 23:44:47	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:44:48	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:44:48	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:44:49	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:44:59	[WARN]	获取世界PID失败, 世界id: 9
+2026-06-09 23:45:02	[WARN]	获取世界PID失败, 世界id: 10
+2026-06-09 23:45:05	[WARN]	获取世界PID失败, 世界id: 9
+2026-06-09 23:45:09	[WARN]	获取世界PID失败, 世界id: 10
+2026-06-09 23:45:10	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:45:12	[WARN]	获取世界PID失败, 世界id: 9
+2026-06-09 23:45:20	[WARN]	获取世界PID失败, 世界id: 10
+2026-06-09 23:45:21	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:49:54	[INFO]	运行平台: darwin/arm64
+2026-06-09 23:49:54	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-09 23:49:54	[INFO]	DST配置目录权限检查通过
+2026-06-09 23:49:54	[INFO]	数据库连接成功
+2026-06-09 23:49:54	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[2-Restart]注册成功
+2026-06-09 23:49:54	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-09 23:49:55	[INFO]	正在更新公网ip
+2026-06-09 23:49:55	[ERROR]	发现世界运行异常，即将执行重启操作, world: 9
+2026-06-09 23:49:55	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:49:56	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:49:58	[ERROR]	发现世界运行异常，即将执行重启操作, world: 10
+2026-06-09 23:49:58	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:49:59	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:51:39	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:51:49	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:51:59	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:52:09	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:52:19	[WARN]	获取世界CPU失败, world: 9, err: operation not permitted
+2026-06-09 23:53:38	[ERROR]	发现世界运行异常，即将执行重启操作, world: 12
+2026-06-09 23:53:38	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:53:39	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:53:48	[INFO]	运行平台: darwin/arm64
+2026-06-09 23:53:48	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-09 23:53:48	[INFO]	DST配置目录权限检查通过
+2026-06-09 23:53:48	[INFO]	数据库连接成功
+2026-06-09 23:53:48	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[2-Restart]注册成功
+2026-06-09 23:53:48	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-09 23:53:48	[INFO]	正在更新公网ip
+2026-06-09 23:53:49	[ERROR]	发现世界运行异常，即将执行重启操作, world: 11
+2026-06-09 23:53:49	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-09 23:53:50	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-09 23:53:53	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:53:53	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:53:56	[INFO]	当前世界正在运行中，跳过，世界ID：11
+2026-06-09 23:53:56	[INFO]	当前世界正在运行中，跳过，世界ID：12
+2026-06-09 23:53:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:53:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:54:03	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:54:03	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:54:12	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:54:12	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:54:22	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:54:22	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:54:32	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:54:32	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:54:42	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:54:42	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:54:52	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:54:52	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:55:02	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:55:02	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:55:12	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:55:12	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:56:29	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:56:29	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:56:39	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:56:39	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:56:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:56:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:56:49	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:56:49	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:56:52	[INFO]	当前世界正在运行中，跳过，世界ID：11
+2026-06-09 23:56:52	[INFO]	当前世界正在运行中，跳过，世界ID：12
+2026-06-09 23:56:52	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:56:52	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:56:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:56:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:57:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:57:05	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-09 23:57:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-09 23:57:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:00:18	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:00:18	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:00:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:00:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:00:35	[INFO]	当前世界正在运行中，跳过，世界ID：11
+2026-06-10 00:00:35	[INFO]	当前世界正在运行中，跳过，世界ID：12
+2026-06-10 00:00:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:00:35	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:00:37	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:00:37	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:00:47	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:00:47	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:01:07	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:01:07	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:02:42	[INFO]	运行平台: darwin/arm64
+2026-06-10 00:02:42	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-10 00:02:43	[INFO]	DST配置目录权限检查通过
+2026-06-10 00:02:43	[INFO]	数据库连接成功
+2026-06-10 00:02:43	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[2-Restart]注册成功
+2026-06-10 00:02:43	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-10 00:02:43	[INFO]	正在更新公网ip
+2026-06-10 00:03:07	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:03:07	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:03:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:03:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:04:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:04:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:04:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:04:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:04:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:04:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:04:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:04:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:04:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:04:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:04:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:04:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:05:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:05:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:05:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:05:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:05:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:05:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:05:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:05:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:05:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:05:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:05:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:05:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:06:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:06:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:06:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:06:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:06:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:06:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:06:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:06:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:06:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:06:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:06:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:06:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:07:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:07:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:07:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:07:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:16:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:16:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:16:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:16:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:16:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:16:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:16:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:16:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:16:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:16:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:17:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:17:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:18:06	[INFO]	运行平台: darwin/arm64
+2026-06-10 00:18:06	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-10 00:18:06	[INFO]	DST配置目录权限检查通过
+2026-06-10 00:18:06	[INFO]	数据库连接成功
+2026-06-10 00:18:06	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[2-Restart]注册成功
+2026-06-10 00:18:06	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-10 00:18:07	[INFO]	正在更新公网ip
+2026-06-10 00:18:08	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:18:09	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:18:09	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:18:09	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:18:24	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:18:24	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:18:41	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:18:41	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:18:44	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:18:44	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:19:22	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:19:22	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:20:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:20:15	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:20:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:20:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:20:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:20:35	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:20:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:20:45	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:20:55	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:20:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:21:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:21:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:21:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:21:15	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:21:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:21:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:21:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:21:35	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:21:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:21:45	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:21:55	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:21:55	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:22:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:22:05	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:22:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:22:15	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:22:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:22:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:22:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:22:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:22:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:22:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:22:55	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:22:55	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:23:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:23:05	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:23:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:23:15	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:23:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:23:25	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:23:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:23:35	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:23:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:23:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:23:55	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:23:55	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:24:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:24:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:24:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:24:15	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:24:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:24:25	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:24:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:24:35	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:24:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:24:45	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:24:55	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:24:55	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:25:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:25:05	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:25:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:25:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:25:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:25:25	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:25:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:25:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:25:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:25:45	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:25:55	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:25:55	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:26:05	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:26:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:26:15	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:26:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:26:25	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:26:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:26:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:26:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:26:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:26:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:26:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:26:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:27:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:27:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:27:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:27:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:27:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:27:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:27:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:27:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:27:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:27:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:27:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:27:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:28:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:28:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:28:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:28:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:28:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:28:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:28:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:28:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:28:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:28:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:28:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:28:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:29:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:29:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:29:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:29:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:29:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:29:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:29:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:29:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:29:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:29:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:29:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:29:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:30:05	[ERROR]	请求失败: Get "https://lobby-v2-cdn.klei.com/ap-east-1-Steam.json.gz": context deadline exceeded (Client.Timeout exceeded while awaiting headers), url: https://lobby-v2-cdn.klei.com/ap-east-1-Steam.json.gz
+2026-06-10 00:30:05	[ERROR]	请求失败: Get "https://lobby-v2-cdn.klei.com/ap-southeast-1-Steam.json.gz": context deadline exceeded (Client.Timeout exceeded while awaiting headers), url: https://lobby-v2-cdn.klei.com/ap-southeast-1-Steam.json.gz
+2026-06-10 00:30:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:30:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:30:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:30:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:30:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:30:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:30:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:30:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:30:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:30:46	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:30:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:30:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:31:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:31:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:31:13	[ERROR]	请求失败: Get "https://lobby-v2-cdn.klei.com/eu-central-1-Steam.json.gz": context deadline exceeded (Client.Timeout exceeded while awaiting headers), url: https://lobby-v2-cdn.klei.com/eu-central-1-Steam.json.gz
+2026-06-10 00:31:13	[ERROR]	请求失败: Get "https://lobby-v2-cdn.klei.com/ap-east-1-Steam.json.gz": context deadline exceeded (Client.Timeout exceeded while awaiting headers), url: https://lobby-v2-cdn.klei.com/ap-east-1-Steam.json.gz
+2026-06-10 00:31:13	[ERROR]	请求失败: Get "https://lobby-v2-cdn.klei.com/ap-southeast-1-Steam.json.gz": context deadline exceeded (Client.Timeout exceeded while awaiting headers), url: https://lobby-v2-cdn.klei.com/ap-southeast-1-Steam.json.gz
+2026-06-10 00:31:13	[ERROR]	请求失败: Get "https://lobby-v2-cdn.klei.com/us-east-1-Steam.json.gz": context deadline exceeded (Client.Timeout exceeded while awaiting headers), url: https://lobby-v2-cdn.klei.com/us-east-1-Steam.json.gz
+2026-06-10 00:31:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:31:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:31:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:31:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:31:35	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:31:35	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:31:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:31:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:32:45	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:32:45	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:32:53	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:32:53	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:32:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:32:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:33:13	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: pigking
+2026-06-10 00:33:13	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: multiplayer_portal
+2026-06-10 00:33:14	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: moonbase
+2026-06-10 00:33:14	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: lava_pond
+2026-06-10 00:33:14	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: oasislake
+2026-06-10 00:33:14	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: antlion
+2026-06-10 00:33:14	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: oceanwhirlbigportal
+2026-06-10 00:33:14	[WARN]	坐标获取失败，跳过, err: 未找到坐标信息, prefab: beequeenhivegrown
+2026-06-10 00:33:15	[ERROR]	没有发现开始标记
+2026-06-10 00:33:23	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:33:23	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:34:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:34:16	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:34:25	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 00:34:26	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 00:34:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:34:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:34:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:34:26	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:34:30	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 00:34:31	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 00:34:31	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:34:31	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:34:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:34:36	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:34:51	[ERROR]	获取游戏存档文件失败, err: open /Users/crowf/Documents/Klei/DoNotStarveTogether/Cluster_2/Master/save/shardindex: no such file or directory
+2026-06-10 00:46:56	[INFO]	运行平台: darwin/arm64
+2026-06-10 00:46:56	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-10 00:46:56	[INFO]	DST配置目录权限检查通过
+2026-06-10 00:46:56	[INFO]	数据库连接成功
+2026-06-10 00:46:56	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[2-Restart]注册成功
+2026-06-10 00:46:56	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-10 00:46:56	[INFO]	正在更新公网ip
+2026-06-10 00:47:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:47:06	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:47:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:47:56	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:48:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:48:07	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:48:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:48:17	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:48:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:48:27	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:48:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:48:37	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:48:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:48:47	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:48:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:48:57	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:49:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:49:07	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:49:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:49:17	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:49:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:49:27	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:49:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:49:37	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:49:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:49:47	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:49:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:49:57	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:50:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:50:07	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:50:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:50:17	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:50:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:50:27	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:50:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:50:37	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:50:46	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:50:47	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:50:56	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:50:57	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:51:06	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:51:07	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:51:16	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:51:17	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:51:26	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:51:27	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 00:51:36	[WARN]	获取世界CPU失败, world: 11, err: operation not permitted
+2026-06-10 00:51:37	[WARN]	获取世界CPU失败, world: 12, err: operation not permitted
+2026-06-10 20:39:50	[INFO]	运行平台: darwin/arm64
+2026-06-10 20:39:50	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-10 20:39:50	[INFO]	DST配置目录权限检查通过
+2026-06-10 20:39:50	[INFO]	数据库连接成功
+2026-06-10 20:39:50	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[2-0-Backup]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[2-BackupClean]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[2-Restart]注册成功
+2026-06-10 20:39:50	[INFO]	定时任务[2-Keepalive]注册成功
+2026-06-10 20:39:50	[INFO]	正在更新公网ip
+2026-06-10 20:39:54	[INFO]	token有效期小于阈值，刷新token
+2026-06-10 20:39:54	[INFO]	token有效期小于阈值，刷新token
+2026-06-10 20:39:54	[INFO]	token有效期小于阈值，刷新token
+2026-06-10 21:09:51	[ERROR]	发现世界运行异常，即将执行重启操作, world: 11
+2026-06-10 21:09:51	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:09:52	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:09:53	[ERROR]	发现世界运行异常，即将执行重启操作, world: 12
+2026-06-10 21:09:53	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:09:54	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:49:48	[WARN]	获取世界CPU失败, world: 13, err: operation not permitted
+2026-06-10 21:49:48	[WARN]	获取世界CPU失败, world: 14, err: operation not permitted
+2026-06-10 21:49:51	[INFO]	当前世界正在运行中，跳过，世界ID：13
+2026-06-10 21:49:51	[INFO]	当前世界正在运行中，跳过，世界ID：14
+2026-06-10 21:49:51	[WARN]	获取世界CPU失败, world: 13, err: operation not permitted
+2026-06-10 21:49:51	[WARN]	获取世界CPU失败, world: 14, err: operation not permitted
+2026-06-10 21:49:54	[WARN]	获取世界CPU失败, world: 13, err: operation not permitted
+2026-06-10 21:49:54	[WARN]	获取世界CPU失败, world: 14, err: operation not permitted
+2026-06-10 21:49:59	[WARN]	获取世界CPU失败, world: 13, err: operation not permitted
+2026-06-10 21:49:59	[WARN]	获取世界CPU失败, world: 14, err: operation not permitted
+2026-06-10 21:50:57	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:50:58	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:50:58	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:50:59	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:50:59	[WARN]	获取世界CPU失败, world: 13, err: operation not permitted
+2026-06-10 21:50:59	[WARN]	获取世界CPU失败, world: 14, err: operation not permitted
+2026-06-10 21:51:09	[WARN]	获取世界CPU失败, world: 13, err: operation not permitted
+2026-06-10 21:51:09	[WARN]	获取世界CPU失败, world: 14, err: operation not permitted
+2026-06-10 21:51:12	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:51:13	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:51:17	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:51:18	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:51:18	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:51:19	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:51:22	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:51:23	[INFO]	结束进程失败，可能是未运行: exit status 1
+2026-06-10 21:51:23	[INFO]	执行ScreenCMD失败，可能是未运行: exit status 1, cmd: c_shutdown()
+2026-06-10 21:51:24	[INFO]	结束进程失败，可能是未运行: exit status 1

@@ -56,14 +56,20 @@ func calculateSHA256(filename string) (string, error) {
 	return fmt.Sprintf("%x", hasher.Sum(nil)), nil
 }
 
+// hashPassword 先对密码做SHA-256哈希，避免超过bcrypt的72字节限制
+func hashPassword(password string) []byte {
+	hash := sha256.Sum256([]byte(password))
+	return []byte(fmt.Sprintf("%x", hash[:]))
+}
+
 func GenerateBcryptPassword(password string) (string, error) {
-	hashed, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	hashed, err := bcrypt.GenerateFromPassword(hashPassword(password), bcrypt.DefaultCost)
 
 	return string(hashed), err
 }
 
 func ValidatePassword(formPassword, dbPassword string) bool {
-	err := bcrypt.CompareHashAndPassword([]byte(dbPassword), []byte(formPassword))
+	err := bcrypt.CompareHashAndPassword([]byte(dbPassword), hashPassword(formPassword))
 	if err != nil {
 		return false
 	}

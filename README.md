@@ -38,6 +38,74 @@
 
 ---
 
+## :apple: macOS 安装指南
+
+macOS 版本已内置自动检测功能，只要通过 Steam 安装好 DST 专用服务器，DMP 启动时会自动完成运行时环境配置。
+
+### 前置要求
+
+1. **Go 1.21+**（用于编译项目）
+2. **Steam**（已安装并登录）
+3. **screen 命令**：`brew install screen`
+4. **steamcmd**（可选，用于自动更新游戏）：`brew install steamcmd`
+
+### 第一步：通过 Steam 安装 DST 专用服务器
+
+打开 Steam → 库 → 工具 → 搜索并安装「**Don't Starve Together Dedicated Server**」
+
+安装完成后，默认路径为：
+```
+~/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+```
+
+### 第二步：克隆并编译项目
+
+```bash
+git clone https://github.com/miracleEverywhere/dst-management-platform-api.git
+cd dst-management-platform-api
+go build -o dmp-api .
+```
+
+### 第三步：启动 DMP
+
+```bash
+./dmp-api
+```
+
+启动时，DMP 会自动检测 Steam 安装的 DST 专用服务器，并完成以下配置：
+
+- 创建 `dst/bin/` 符号链接指向真实二进制文件
+- 创建 `dst/bin64/` wrapper 脚本（64位 + LuaJIT）
+- 创建 `dst/mods` 符号链接
+- 创建 `dst/version.txt`（从 Steam ACF 文件读取版本号）
+- 检测 steamcmd 并创建 wrapper（如果已安装）
+
+日志中会显示检测结果，如：
+```
+macOS: 检测到 DST 安装: ~/Library/Application Support/Steam/...
+macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+macOS: 已创建 dst/version.txt (版本: 23206748)
+```
+
+### 第四步：授予完整磁盘访问权限
+
+macOS 上 DST 服务器需要访问 `~/Documents/Klei/DoNotStarveTogether` 目录。
+请前往「系统设置 → 隐私与安全 → 完整磁盘访问权限」，将运行 DMP 的终端应用（如 Ghostty、Terminal）加入列表。
+
+### 访问 DMP
+
+浏览器打开 `http://localhost:8082`，默认管理员账号：
+- 用户名：`admin`
+- 密码：`admin123`
+
+### 注意事项
+
+- `dst/bin`、`dst/bin64`、`dst/mods`、`dst/version.txt`、`steamcmd/` 均为运行时生成的文件，已加入 `.gitignore`，不会提交到 Git
+- 如果重新克隆项目，只需再次运行 DMP，会自动重建所有运行时文件
+- 如果未安装 steamcmd，游戏自动更新功能将不可用，但不影响正常开服
+
+---
+
 ## :cherries: 推广
 
 [汉堡云服务器](https://hbyidc.com/recommend/OKkxTzgMP6k7)，专为饥荒打造！官方合作商「汉堡云」带来高性能游戏服务器，首月低至6折！

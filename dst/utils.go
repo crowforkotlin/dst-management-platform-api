@@ -59,7 +59,9 @@ func NewGameController(room *models.Room, worlds *[]models.World, setting *model
 func (g *Game) initInfo() {
 	// room
 	g.clusterName = fmt.Sprintf("Cluster_%d", g.room.ID)
-	g.clusterPath = fmt.Sprintf("%s/%s", utils.ClusterPath, g.clusterName)
+	// 展开~为用户主目录
+	clusterBasePath := utils.ExpandHome(utils.ClusterPath)
+	g.clusterPath = fmt.Sprintf("%s/%s", clusterBasePath, g.clusterName)
 	g.clusterIniPath = fmt.Sprintf("%s/cluster.ini", g.clusterPath)
 	g.clusterTokenTxtPath = fmt.Sprintf("%s/cluster_token.txt", g.clusterPath)
 

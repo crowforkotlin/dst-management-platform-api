@@ -39,7 +39,7 @@ func (g *Game) dsModsSetup() error {
 	if tbl, ok := modsTable.(*lua.LTable); ok {
 		// 有配置，但为空
 		if tbl.Len() == 0 {
-			err := utils.TruncAndWriteFile(utils.GameModSettingPath, fileContent)
+			err := utils.TruncAndWriteFile(utils.GameModSettingPath, "-- no mods configured\n")
 			if err != nil {
 				return err
 			}
@@ -53,13 +53,16 @@ func (g *Game) dsModsSetup() error {
 			}
 		})
 		// 有配置，不为空
+		if fileContent == "" {
+			fileContent = "-- no workshop mods\n"
+		}
 		err := utils.TruncAndWriteFile(utils.GameModSettingPath, fileContent)
 		if err != nil {
 			return err
 		}
 	} else {
 		// 无配置
-		err := utils.TruncAndWriteFile(utils.GameModSettingPath, fileContent)
+		err := utils.TruncAndWriteFile(utils.GameModSettingPath, "-- no mods configured\n")
 		if err != nil {
 			return err
 		}
@@ -477,6 +480,9 @@ func (g *Game) saveMods() error {
 			modContent = g.room.ModData
 		} else {
 			modContent = world.ModData
+		}
+		if modContent == "" {
+			modContent = "return {}\n"
 		}
 		err := utils.TruncAndWriteFile(g.worldSaveData[idx].modOverridesPath, modContent)
 		if err != nil {

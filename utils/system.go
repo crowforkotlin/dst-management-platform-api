@@ -22,6 +22,18 @@ import (
 
 var StartTime = time.Now()
 
+// ExpandHome 将路径中的~展开为用户主目录
+func ExpandHome(path string) string {
+	if strings.HasPrefix(path, "~") {
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return path
+		}
+		return strings.Replace(path, "~", homeDir, 1)
+	}
+	return path
+}
+
 // EnsureDirExists 检查目录是否存在，如果不存在则创建
 func EnsureDirExists(dirPath string) error {
 	if _, err := os.Stat(dirPath); os.IsNotExist(err) {
@@ -36,11 +48,16 @@ func EnsureDirExists(dirPath string) error {
 	return nil
 }
 
-// EnsureFileExists 检查文件是否存在，如果不存在则创建空文件
+// EnsureFileExists 检查文件是否存在，如果不存在则创建空文件（自动创建父目录）
 func EnsureFileExists(filePath string) error {
 	// 检查文件是否存在
 	_, err := os.Stat(filePath)
 	if os.IsNotExist(err) {
+		// 确保父目录存在
+		dir := filepath.Dir(filePath)
+		if err := os.MkdirAll(dir, os.ModePerm); err != nil {
+			return fmt.Errorf("创建父目录失败 %s: %w", dir, err)
+		}
 		// 文件不存在，创建一个空文件
 		file, err := os.Create(filePath)
 		if err != nil {
@@ -71,18 +88,38 @@ func FileDirectoryExists(filePath string) bool {
 }
 
 // TruncAndWriteFile 将指定内容完整写入文件，如果文件已存在会清空原有内容，如果文件不存在会创建新文件
+// 使用原子写入：先写临时文件再重命名，避免写入失败时文件变为空
 func TruncAndWriteFile(fileName string, fileContent string) error {
-	fileContentByte := []byte(fileContent)
-	file, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
-	if err != nil {
-		return fmt.Errorf("打开或创建文件时出错: %w", err)
+	if fileContent == "" {
+		return fmt.Errorf("拒绝写入空文件: %s", fileName)
 	}
-	defer file.Close()
 
-	// 写入新数据
-	_, err = file.Write(fileContentByte)
+	// 先写入临时文件
+	tmpFile := fileName + ".tmp"
+	file, err := os.OpenFile(tmpFile, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
-		return fmt.Errorf("写入数据时出错: %w", err)
+		return fmt.Errorf("打开临时文件失败 %s: %w", fileName, err)
+	}
+
+	_, err = file.Write([]byte(fileContent))
+	if err != nil {
+		file.Close()
+		os.Remove(tmpFile)
+		return fmt.Errorf("写入文件失败 %s: %w", fileName, err)
+	}
+
+	err = file.Sync()
+	file.Close()
+	if err != nil {
+		os.Remove(tmpFile)
+		return fmt.Errorf("同步文件失败 %s: %w", fileName, err)
+	}
+
+	// 原子替换
+	err = os.Rename(tmpFile, fileName)
+	if err != nil {
+		os.Remove(tmpFile)
+		return fmt.Errorf("重命名文件失败 %s: %w", fileName, err)
 	}
 
 	return nil

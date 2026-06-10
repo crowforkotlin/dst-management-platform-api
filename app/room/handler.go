@@ -644,18 +644,30 @@ func (h *Handler) uploadPost(c *gin.Context) {
 		return
 	}
 
-	clusterPath := fmt.Sprintf("%s/Cluster_%d", utils.ClusterPath, room.ID)
+	clusterPath := fmt.Sprintf("%s/Cluster_%d", utils.ExpandHome(utils.ClusterPath), room.ID)
 
 	// 设置三个名单
-	err = utils.TruncAndWriteFile(fmt.Sprintf("%s/adminlist.txt", clusterPath), uploadExtraInfo.adminlist)
+	adminlist := uploadExtraInfo.adminlist
+	if adminlist == "" {
+		adminlist = "\n"
+	}
+	err = utils.TruncAndWriteFile(fmt.Sprintf("%s/adminlist.txt", clusterPath), adminlist)
 	if err != nil {
 		logger.Logger.Errorf("设置管理员失败, err: %v", err)
 	}
-	err = utils.TruncAndWriteFile(fmt.Sprintf("%s/blocklist.txt", clusterPath), uploadExtraInfo.blocklist)
+	blocklist := uploadExtraInfo.blocklist
+	if blocklist == "" {
+		blocklist = "\n"
+	}
+	err = utils.TruncAndWriteFile(fmt.Sprintf("%s/blocklist.txt", clusterPath), blocklist)
 	if err != nil {
 		logger.Logger.Errorf("设置黑名单失败, err: %v", err)
 	}
-	err = utils.TruncAndWriteFile(fmt.Sprintf("%s/whitelist.txt", clusterPath), uploadExtraInfo.whitelist)
+	whitelist := uploadExtraInfo.whitelist
+	if whitelist == "" {
+		whitelist = "\n"
+	}
+	err = utils.TruncAndWriteFile(fmt.Sprintf("%s/whitelist.txt", clusterPath), whitelist)
 	if err != nil {
 		logger.Logger.Errorf("设置预留位失败, err: %v", err)
 	}

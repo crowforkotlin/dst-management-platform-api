@@ -4,6 +4,7 @@ import (
 	"dst-management-platform-api/logger"
 	"dst-management-platform-api/utils"
 	"fmt"
+	"os"
 )
 
 func (g *Game) getLogContent(logType string, id, lines int) []string {
@@ -162,21 +163,21 @@ func (g *Game) logsClean(cleanLogs *CleanLogs) bool {
 		}
 	}
 	if cleanLogs.Steam {
-		err := utils.TruncAndWriteFile("Steam/logs/bootstrap_log.txt", "")
+		err := os.Truncate("Steam/logs/bootstrap_log.txt", 0)
 		if err != nil {
 			allSuccess = false
 			logger.Logger.Errorf("删除Steam日志失败, err: %v", err)
 		}
 	}
 	if cleanLogs.Access {
-		err := utils.TruncAndWriteFile("logs/access.log", "")
+		err := os.Truncate("logs/access.log", 0)
 		if err != nil {
 			allSuccess = false
 			logger.Logger.Errorf("删除请求日志失败, err: %v", err)
 		}
 	}
 	if cleanLogs.Runtime {
-		err := utils.TruncAndWriteFile("logs/runtime.log", "")
+		err := os.Truncate("logs/runtime.log", 0)
 		if err != nil {
 			allSuccess = false
 			logger.Logger.Errorf("删除运行日志失败, err: %v", err)

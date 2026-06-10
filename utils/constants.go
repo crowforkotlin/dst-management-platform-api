@@ -1,5 +1,7 @@
 package utils
 
+import "runtime"
+
 const Version = "v3.1.5"
 
 const ApiVersion = "v3"
@@ -22,6 +24,14 @@ const SteamApiModDetail = "http://api.steampowered.com/IPublishedFileService/Get
 
 const SteamApiModSearch = "http://api.steampowered.com/IPublishedFileService/QueryFiles/v1/"
 
-const ClusterPath = ".klei/DoNotStarveTogether"
+// ClusterPath 根据操作系统自动设置DST配置目录
+// macOS: ~/Documents/Klei/DoNotStarveTogether
+// Linux: ~/.klei/DoNotStarveTogether
+var ClusterPath = func() string {
+	if runtime.GOOS == "darwin" {
+		return "~/Documents/Klei/DoNotStarveTogether"
+	}
+	return "~/.klei/DoNotStarveTogether"
+}()
 
 const DmpFiles = "dmp_files"

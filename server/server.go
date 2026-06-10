@@ -17,7 +17,11 @@ import (
 	"dst-management-platform-api/scheduler"
 	"dst-management-platform-api/utils"
 	"fmt"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"runtime"
+	"strconv"
 
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
@@ -42,6 +46,32 @@ func Run() {
 
 	// 初始化日志
 	logger.InitLogger(logLevel)
+
+	// macOS 自动检测 Steam DST 并创建运行时链接
+	if runtime.GOOS == "darwin" {
+		macOSAutoSetup()
+	}
+
+	// 平台检测
+	logger.Logger.Infof("运行平台: %s/%s", runtime.GOOS, runtime.GOARCH)
+	logger.Logger.Infof("DST配置目录: %s", utils.ExpandHome(utils.ClusterPath))
+
+	// 检查DST配置目录写入权限
+	clusterDir := utils.ExpandHome(utils.ClusterPath)
+	if err := utils.EnsureDirExists(clusterDir); err != nil {
+		logger.Logger.Errorf("无法创建DST配置目录 %s: %v", clusterDir, err)
+		logger.Logger.Error("请检查目录权限，不要用sudo运行DMP，应以当前用户身份运行")
+	} else {
+		// 测试写入权限
+		testFile := fmt.Sprintf("%s/.dmp_write_test", clusterDir)
+		if err := utils.TruncAndWriteFile(testFile, "test"); err != nil {
+			logger.Logger.Errorf("DST配置目录无写入权限: %v", err)
+			logger.Logger.Error("请修复目录权限: chown -R $(whoami) %s", clusterDir)
+		} else {
+			os.Remove(testFile)
+			logger.Logger.Info("DST配置目录权限检查通过")
+		}
+	}
 
 	// 初始化文件
 	embedFS.GenerateDefaultFile()
@@ -108,4 +138,161 @@ func Run() {
 	if err != nil {
 		panic(fmt.Sprintf("启动服务器失败: %s", err.Error()))
 	}
+}
+
+// macOSAutoSetup 在 macOS 上自动检测 Steam 安装的 DST 专用服务器并创建运行时链接
+// 包括: dst/bin 符号链接、dst/bin64 wrapper 脚本、steamcmd wrapper、version.txt
+func macOSAutoSetup() {
+	// 标准 Steam DST 安装路径
+	dstAppDir := filepath.Join(
+		os.Getenv("HOME"),
+		"Library", "Application Support", "Steam", "steamapps", "common",
+		"Don't Starve Together Dedicated Server",
+	)
+
+	// 检查 DST 是否已安装
+	if !utils.FileDirectoryExists(dstAppDir) {
+		logger.Logger.Warn("macOS: 未检测到 Steam DST 专用服务器安装")
+		logger.Logger.Warnf("macOS: 预期路径: %s", dstAppDir)
+		logger.Logger.Warn("macOS: 请先通过 Steam 安装 Don't Starve Together Dedicated Server")
+		logger.Logger.Warn("macOS: Steam 库 -> 工具 -> Don't Starve Together Dedicated Server")
+		return
+	}
+
+	logger.Logger.Infof("macOS: 检测到 DST 安装: %s", dstAppDir)
+
+	// 二进制实际路径 (.app/Contents/MacOS)
+	binMacOSDir := filepath.Join(dstAppDir, "dontstarve_dedicated_server_nullrenderer.app", "Contents", "MacOS")
+	binName := "dontstarve_dedicated_server_nullrenderer"
+
+	// 1. 创建 dst/bin/ 符号链接 (32-bit 兼容)
+	if !utils.FileDirectoryExists("dst/bin") {
+		if err := os.MkdirAll("dst/bin", 0755); err != nil {
+			logger.Logger.Errorf("macOS: 创建 dst/bin 失败: %v", err)
+		} else {
+			// 创建符号链接指向真实二进制
+			symlinkTarget := filepath.Join(binMacOSDir, binName)
+			symlinkPath := filepath.Join("dst", "bin", binName)
+			if err := os.Symlink(symlinkTarget, symlinkPath); err != nil {
+				logger.Logger.Errorf("macOS: 创建 dst/bin 符号链接失败: %v", err)
+			} else {
+				logger.Logger.Infof("macOS: 已创建 dst/bin/%s -> %s", binName, symlinkTarget)
+			}
+			// 创建 lib32 目录
+			_ = os.MkdirAll("dst/bin/lib32", 0755)
+		}
+	}
+
+	// 2. 创建 dst/bin64/ wrapper 脚本 (64-bit 和 luajit)
+	if !utils.FileDirectoryExists("dst/bin64") {
+		if err := os.MkdirAll("dst/bin64/lib64", 0755); err != nil {
+			logger.Logger.Errorf("macOS: 创建 dst/bin64 失败: %v", err)
+		} else {
+			// wrapper 脚本: cd 到真实二进制目录并用 exec 执行
+			wrapperScript := fmt.Sprintf(
+				"#!/bin/bash\ncd %q && exec ./%s \"$@\"\n",
+				binMacOSDir, binName,
+			)
+			// 64-bit 版本
+			bin64Script := filepath.Join("dst", "bin64", "dontstarve_dedicated_server_nullrenderer_x64")
+			if err := os.WriteFile(bin64Script, []byte(wrapperScript), 0755); err != nil {
+				logger.Logger.Errorf("macOS: 创建 bin64 wrapper 失败: %v", err)
+			} else {
+				logger.Logger.Infof("macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper")
+			}
+			// luajit 版本
+			luajitScript := filepath.Join("dst", "bin64", "dontstarve_dedicated_server_nullrenderer_x64_luajit")
+			if err := os.WriteFile(luajitScript, []byte(wrapperScript), 0755); err != nil {
+				logger.Logger.Errorf("macOS: 创建 bin64 luajit wrapper 失败: %v", err)
+			} else {
+				logger.Logger.Infof("macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper")
+			}
+		}
+	}
+
+	// 3. 创建 dst/mods 符号链接
+	modsSrcDir := filepath.Join(dstAppDir, "dontstarve_dedicated_server_nullrenderer.app", "Contents", "mods")
+	if utils.FileDirectoryExists(modsSrcDir) && !utils.FileDirectoryExists("dst/mods") {
+		if err := os.Symlink(modsSrcDir, filepath.Join("dst", "mods")); err != nil {
+			logger.Logger.Errorf("macOS: 创建 dst/mods 符号链接失败: %v", err)
+		} else {
+			logger.Logger.Infof("macOS: 已创建 dst/mods -> %s", modsSrcDir)
+		}
+	}
+
+	// 4. 创建 dst/version.txt
+	if !utils.FileDirectoryExists("dst/version.txt") {
+		// 尝试从 Steam ACF 文件读取版本号
+		version := "0"
+		acfPath := filepath.Join(
+			os.Getenv("HOME"),
+			"Library", "Application Support", "Steam", "steamapps", "appmanifest_343050.acf",
+		)
+		if utils.FileDirectoryExists(acfPath) {
+			if parser, err := utils.NewParser(acfPath); err == nil {
+				if buildID, ok := parser.Root.List["buildid"]; ok {
+					// buildid 存在，尝试转为数字
+					if _, err := strconv.Atoi(buildID); err == nil {
+						version = buildID
+					}
+				}
+			}
+		}
+		if err := utils.TruncAndWriteFile("dst/version.txt", version); err != nil {
+			logger.Logger.Errorf("macOS: 创建 dst/version.txt 失败: %v", err)
+		} else {
+			logger.Logger.Infof("macOS: 已创建 dst/version.txt (版本: %s)", version)
+		}
+	}
+
+	// 5. 检测 steamcmd 并创建 wrapper
+	if !utils.FileDirectoryExists("steamcmd/steamcmd.sh") {
+		steamcmdPath := findSteamCMD()
+		if steamcmdPath == "" {
+			logger.Logger.Warn("macOS: 未检测到 steamcmd，自动更新功能将不可用")
+			logger.Logger.Warn("macOS: 请安装 steamcmd: brew install steamcmd")
+		} else {
+			_ = os.MkdirAll("steamcmd/linux32", 0755)
+			_ = os.MkdirAll("steamcmd/linux64", 0755)
+
+			// 创建 placeholder steamclient.so
+			for _, sub := range []string{"linux32", "linux64"} {
+				soPath := filepath.Join("steamcmd", sub, "steamclient.so")
+				if !utils.FileDirectoryExists(soPath) {
+					_ = os.WriteFile(soPath, []byte("# macOS placeholder\n"), 0644)
+				}
+			}
+
+			// 创建 steamcmd.sh wrapper
+			wrapper := fmt.Sprintf("#!/bin/bash\nexec %q \"$@\"\n", steamcmdPath)
+			if err := os.WriteFile("steamcmd/steamcmd.sh", []byte(wrapper), 0755); err != nil {
+				logger.Logger.Errorf("macOS: 创建 steamcmd wrapper 失败: %v", err)
+			} else {
+				logger.Logger.Infof("macOS: 已创建 steamcmd/steamcmd.sh -> %s", steamcmdPath)
+			}
+		}
+	}
+
+	logger.Logger.Info("macOS: DST 运行时环境检测完成")
+}
+
+// findSteamCMD 在常见路径中查找 steamcmd
+func findSteamCMD() string {
+	candidates := []string{
+		"/opt/homebrew/bin/steamcmd",
+		"/usr/local/bin/steamcmd",
+	}
+
+	// 也尝试 which
+	if path, err := exec.LookPath("steamcmd"); err == nil {
+		return path
+	}
+
+	for _, p := range candidates {
+		if utils.FileDirectoryExists(p) {
+			return p
+		}
+	}
+
+	return ""
 }

@@ -1,3 +1,11 @@
 .idea
 .claude/*
 !.claude/skills/
+
+# macOS DST runtime symlinks
+dst/bin/
+dst/bin64/
+dst/mods
+dst/ugc_mods/
+dst/version.txt
+steamcmd/

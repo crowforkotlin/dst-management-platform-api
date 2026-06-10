@@ -50,21 +50,27 @@ func (g *Game) createWorlds() error {
 			return err
 		}
 
-		err = utils.TruncAndWriteFile(world.levelDataOverridePath, world.LevelData)
+		levelData := world.LevelData
+		if levelData == "" {
+			levelData = "-- default level data\nreturn {}\n"
+		}
+		err = utils.TruncAndWriteFile(world.levelDataOverridePath, levelData)
 		if err != nil {
 			return err
 		}
 
+		var modData string
 		if g.room.ModInOne {
-			err = utils.TruncAndWriteFile(world.modOverridesPath, g.room.ModData)
-			if err != nil {
-				return err
-			}
+			modData = g.room.ModData
 		} else {
-			err = utils.TruncAndWriteFile(world.modOverridesPath, world.ModData)
-			if err != nil {
-				return err
-			}
+			modData = world.ModData
+		}
+		if modData == "" {
+			modData = "return {}\n"
+		}
+		err = utils.TruncAndWriteFile(world.modOverridesPath, modData)
+		if err != nil {
+			return err
 		}
 
 		worldsName = append(worldsName, world.WorldName)
@@ -155,7 +161,9 @@ func (g *Game) worldPerformanceStatus(id int) PerformanceStatus {
 		return performanceStatus
 	}
 
-	pid, err := strconv.Atoi(strings.TrimSpace(out))
+	// macOS上可能匹配到多个进程（wrapper脚本+实际二进制），取第一个PID
+	pidStr := strings.TrimSpace(strings.Split(out, "\n")[0])
+	pid, err := strconv.Atoi(pidStr)
 	if err != nil {
 		logger.Logger.Warnf("获取世界PID失败, id: %d, err: %v", world.ID, err)
 		return performanceStatus
@@ -220,16 +228,20 @@ func (g *Game) startWorld(id int) error {
 		world *worldSaveData
 	)
 
+	world, err = g.getWorldByID(id)
+	if err != nil {
+		return err
+	}
+
 	// 如果正在运行，则跳过
 	if g.worldUpStatus(id) {
 		logger.Logger.Infof("当前世界正在运行中，跳过，世界ID：%d", id)
 		return nil
 	}
 
-	world, err = g.getWorldByID(id)
-	if err != nil {
-		return err
-	}
+	// 启动前清理可能残留的孤儿DST进程（解决macOS上screen退出后子进程未杀的问题）
+	cleanupCMD := fmt.Sprintf("ps -ef | grep '%s' | grep dontstarve_dedicated_server_nullrenderer | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null", world.screenName)
+	_ = utils.BashCMD(cleanupCMD)
 
 	err = g.dsModsSetup()
 	if err != nil {
@@ -265,6 +277,10 @@ func (g *Game) startAllWorld() error {
 			continue
 		}
 
+		// 启动前清理可能残留的孤儿DST进程
+		cleanupCMD := fmt.Sprintf("ps -ef | grep '%s' | grep dontstarve_dedicated_server_nullrenderer | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null", world.screenName)
+		_ = utils.BashCMD(cleanupCMD)
+
 		logger.Logger.Debug(world.startCmd)
 		err = utils.BashCMD(world.startCmd)
 		if err != nil {
@@ -281,6 +297,7 @@ func (g *Game) stopWorld(id int) error {
 		return err
 	}
 
+	// 1. 尝试优雅关闭
 	err = utils.ScreenCMD("c_shutdown()", world.screenName)
 	if err != nil {
 		logger.Logger.Infof("执行ScreenCMD失败，可能是未运行: %v, cmd: c_shutdown()", err)
@@ -288,6 +305,11 @@ func (g *Game) stopWorld(id int) error {
 
 	time.Sleep(1 * time.Second)
 
+	// 2. 查找并杀死DST进程（解决macOS上screen退出后子进程成为孤儿进程的问题）
+	findAndKillCMD := fmt.Sprintf("ps -ef | grep '%s' | grep dontstarve_dedicated_server_nullrenderer | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null", world.screenName)
+	_ = utils.BashCMD(findAndKillCMD)
+
+	// 3. 关闭screen会话
 	killCMD := fmt.Sprintf("screen -S %s -X quit", world.screenName)
 	err = utils.BashCMD(killCMD)
 	if err != nil {
