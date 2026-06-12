@@ -9,6 +9,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -102,26 +103,18 @@ func (g *Game) createWorlds() error {
 }
 
 func (g *Game) worldUpStatus(id int) bool {
-	var (
-		stat  bool
-		err   error
-		world *worldSaveData
-	)
-
-	world, err = g.getWorldByID(id)
+	world, err := g.getWorldByID(id)
 	if err != nil {
 		return false
 	}
 
-	cmd := fmt.Sprintf("ps -ef | grep %s | grep -v grep", world.screenName)
-	err = utils.BashCMD(cmd)
-	if err != nil {
-		stat = false
-	} else {
-		stat = true
+	if runtime.GOOS == "darwin" {
+		return utils.DstIsRunningMacOS(g.clusterName, world.WorldName)
 	}
 
-	return stat
+	cmd := fmt.Sprintf("ps -ef | grep %s | grep -v grep", world.screenName)
+	err = utils.BashCMD(cmd)
+	return err == nil
 }
 
 type PerformanceStatus struct {
@@ -177,27 +170,48 @@ func (g *Game) worldPerformanceStatus(id int) PerformanceStatus {
 
 	cpu, err := p.Percent(time.Millisecond * 100)
 	if err != nil {
-		logger.Logger.Warnf("获取世界CPU失败, world: %v, err: %v", world.ID, err)
-		return performanceStatus
+		// macOS 上 gopsutil 可能因权限不足失败（operation not permitted），使用 ps 命令后备
+		logger.Logger.Debugf("gopsutil获取CPU失败, 尝试ps后备, world: %v, err: %v", world.ID, err)
+		cpuCmd := fmt.Sprintf("ps -p %d -o %%cpu= | tr -d ' '", pid)
+		cpuOut, _, cpuErr := utils.BashCMDOutput(cpuCmd)
+		if cpuErr == nil && strings.TrimSpace(cpuOut) != "" {
+			if cpuVal, parseErr := strconv.ParseFloat(strings.TrimSpace(cpuOut), 64); parseErr == nil {
+				performanceStatus.CPU = cpuVal
+			}
+		}
+	} else {
+		performanceStatus.CPU = cpu
 	}
-
-	performanceStatus.CPU = cpu
 
 	mem, err := p.MemoryPercent()
 	if err != nil {
-		logger.Logger.Warnf("获取世界内存使用率失败, world: %v, err: %v", world.ID, err)
-		return performanceStatus
+		logger.Logger.Debugf("gopsutil获取内存使用率失败, 尝试ps后备, world: %v, err: %v", world.ID, err)
+		// ps 后备获取内存
+		memCmd := fmt.Sprintf("ps -p %d -o %%mem= | tr -d ' '", pid)
+		memOut, _, memErr := utils.BashCMDOutput(memCmd)
+		if memErr == nil && strings.TrimSpace(memOut) != "" {
+			if memVal, parseErr := strconv.ParseFloat(strings.TrimSpace(memOut), 64); parseErr == nil {
+				performanceStatus.Mem = memVal
+			}
+		}
+	} else {
+		performanceStatus.Mem = float64(mem)
 	}
-
-	performanceStatus.Mem = float64(mem)
 
 	memSize, err := p.MemoryInfo()
 	if err != nil {
-		logger.Logger.Warnf("获取世界内存使用量失败, world: %v, err: %v", world.ID, err)
-		return performanceStatus
+		logger.Logger.Debugf("gopsutil获取内存信息失败, 尝试ps后备, world: %v, err: %v", world.ID, err)
+		// ps 后备获取 RSS（KB）
+		rssCmd := fmt.Sprintf("ps -p %d -o rss= | tr -d ' '", pid)
+		rssOut, _, rssErr := utils.BashCMDOutput(rssCmd)
+		if rssErr == nil && strings.TrimSpace(rssOut) != "" {
+			if rssVal, parseErr := strconv.ParseFloat(strings.TrimSpace(rssOut), 64); parseErr == nil {
+				performanceStatus.MemSize = rssVal / 1024 // KB -> MB
+			}
+		}
+	} else {
+		performanceStatus.MemSize = float64(memSize.RSS / 1024 / 1024)
 	}
-
-	performanceStatus.MemSize = float64(memSize.RSS / 1024 / 1024)
 
 	logger.Logger.Debug(utils.StructToFlatString(performanceStatus))
 
@@ -205,7 +219,9 @@ func (g *Game) worldPerformanceStatus(id int) PerformanceStatus {
 }
 
 func (g *Game) startWorld(id int) error {
-	_ = utils.BashCMD("screen -wipe")
+	if runtime.GOOS != "darwin" {
+		_ = utils.BashCMD("screen -wipe")
+	}
 
 	// 启动游戏后，删除mod临时下载目录
 	g.acfMutex.Lock()
@@ -239,9 +255,17 @@ func (g *Game) startWorld(id int) error {
 		return nil
 	}
 
-	// 启动前清理可能残留的孤儿DST进程（解决macOS上screen退出后子进程未杀的问题）
-	cleanupCMD := fmt.Sprintf("ps -ef | grep '%s' | grep dontstarve_dedicated_server_nullrenderer | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null", world.screenName)
-	_ = utils.BashCMD(cleanupCMD)
+	// macOS: 启动前彻底清理该世界的所有残留进程
+	if runtime.GOOS == "darwin" {
+		cleanupCMD := buildCleanupCmd(g.clusterName, world.WorldName)
+		_ = utils.BashCMD(cleanupCMD)
+		time.Sleep(500 * time.Millisecond) // 等待进程完全退出
+		// 二次清理确保无残留
+		_ = utils.BashCMD(cleanupCMD)
+	} else {
+		cleanupCMD := buildCleanupCmd(g.clusterName, world.WorldName)
+		_ = utils.BashCMD(cleanupCMD)
+	}
 
 	err = g.dsModsSetup()
 	if err != nil {
@@ -255,7 +279,9 @@ func (g *Game) startWorld(id int) error {
 }
 
 func (g *Game) startAllWorld() error {
-	_ = utils.BashCMD("screen -wipe")
+	if runtime.GOOS != "darwin" {
+		_ = utils.BashCMD("screen -wipe")
+	}
 
 	var err error
 
@@ -278,7 +304,8 @@ func (g *Game) startAllWorld() error {
 		}
 
 		// 启动前清理可能残留的孤儿DST进程
-		cleanupCMD := fmt.Sprintf("ps -ef | grep '%s' | grep dontstarve_dedicated_server_nullrenderer | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null", world.screenName)
+		// macOS上ps输出的进程命令不含screenName，需要用cluster+shard参数匹配
+		cleanupCMD := buildCleanupCmd(g.clusterName, world.WorldName)
 		_ = utils.BashCMD(cleanupCMD)
 
 		logger.Logger.Debug(world.startCmd)
@@ -297,7 +324,14 @@ func (g *Game) stopWorld(id int) error {
 		return err
 	}
 
-	// 1. 尝试优雅关闭
+	// macOS: 通过 FIFO 发送 shutdown 命令，然后杀死进程
+	if runtime.GOOS == "darwin" {
+		_ = utils.DstSendCmdMacOS("c_shutdown()", g.clusterName, world.WorldName)
+		time.Sleep(1 * time.Second)
+		return utils.DstStopWorld(g.clusterName, world.WorldName)
+	}
+
+	// Linux: 通过 screen 发送 shutdown 命令
 	err = utils.ScreenCMD("c_shutdown()", world.screenName)
 	if err != nil {
 		logger.Logger.Infof("执行ScreenCMD失败，可能是未运行: %v, cmd: c_shutdown()", err)
@@ -305,18 +339,26 @@ func (g *Game) stopWorld(id int) error {
 
 	time.Sleep(1 * time.Second)
 
-	// 2. 查找并杀死DST进程（解决macOS上screen退出后子进程成为孤儿进程的问题）
-	findAndKillCMD := fmt.Sprintf("ps -ef | grep '%s' | grep dontstarve_dedicated_server_nullrenderer | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null", world.screenName)
+	// 关闭screen会话
+	killCMD := fmt.Sprintf("screen -S %s -X quit", world.screenName)
+	_ = utils.BashCMD(killCMD)
+
+	// 查找并杀死DST进程
+	findAndKillCMD := buildCleanupCmd(g.clusterName, world.WorldName)
 	_ = utils.BashCMD(findAndKillCMD)
 
-	// 3. 关闭screen会话
-	killCMD := fmt.Sprintf("screen -S %s -X quit", world.screenName)
-	err = utils.BashCMD(killCMD)
-	if err != nil {
-		logger.Logger.Infof("结束进程失败，可能是未运行: %v", err)
-	}
-
 	return nil
+}
+
+// buildCleanupCmd 构建杀死DST孤儿进程的命令
+// macOS上ps输出的进程命令不含screenName（如 DMP_Cluster_4_Master），
+// 而是显示 ./dontstarve_dedicated_server_nullrenderer -console -cluster Cluster_4 -shard Master
+// 因此需要用cluster+shard参数来精确匹配
+func buildCleanupCmd(clusterName, worldName string) string {
+	return fmt.Sprintf(
+		"ps -ef | grep dontstarve_dedicated_server_nullrenderer | grep '%s' | grep '%s' | grep -v grep | grep -v screen | awk '{print $2}' | xargs kill -9 2>/dev/null",
+		clusterName, worldName,
+	)
 }
 
 func (g *Game) stopAllWorld() error {
@@ -346,7 +388,7 @@ func (g *Game) consoleCmd(cmd string, id int) error {
 	}
 	s := strings.ReplaceAll(cmd, "\"", "'")
 
-	return utils.ScreenCMD(s, world.screenName)
+	return utils.DstSendCmd(world.screenName, s, g.clusterName, world.WorldName)
 }
 
 func (g *Game) getWorldByID(id int) (*worldSaveData, error) {
@@ -383,8 +425,15 @@ func (g *Game) getOnlinePlayerList(id int) ([]string, error) {
 		return []string{}, err
 	}
 
-	listScreenCmd := fmt.Sprintf("screen -S \"%s\" -p 0 -X stuff \"for i, v in ipairs(TheNet:GetClientTable()) do  print(string.format(\\\"playerlist %%s [%%d] %%s <-@dmp@-> %%s <-@dmp@-> %%s\\\", 99999999, i-1, v.userid, v.name, v.prefab )) end$(printf \\\\r)\"\n", world.screenName)
-	err = utils.BashCMD(listScreenCmd)
+	if runtime.GOOS == "darwin" {
+		// macOS: 通过 FIFO 发送命令
+		cmd := `for i, v in ipairs(TheNet:GetClientTable()) do  print(string.format("playerlist %s [%d] %s <-@dmp@-> %s <-@dmp@-> %s", 99999999, i-1, v.userid, v.name, v.prefab )) end`
+		err = utils.DstSendCmdMacOS(cmd, g.clusterName, world.WorldName)
+	} else {
+		// Linux: 通过 screen stuff 发送
+		listScreenCmd := fmt.Sprintf("screen -S \"%s\" -p 0 -X stuff \"for i, v in ipairs(TheNet:GetClientTable()) do  print(string.format(\\\"playerlist %%s [%%d] %%s <-@dmp@-> %%s <-@dmp@-> %%s\\\", 99999999, i-1, v.userid, v.name, v.prefab )) end$(printf \\\\r)\"\n", world.screenName)
+		err = utils.BashCMD(listScreenCmd)
+	}
 	if err != nil {
 		return []string{}, err
 	}
@@ -400,9 +449,119 @@ func (g *Game) getOnlinePlayerList(id int) ([]string, error) {
 }
 
 var (
-	playerListPattern = regexp.MustCompile(`playerlist 99999999 \[[0-9]+\] (KU_.+) <-@dmp@-> (.*) <-@dmp@-> (.+)?`)
-	hostPattern       = regexp.MustCompile(`\[Host]`)
+	playerListPattern        = regexp.MustCompile(`playerlist 99999999 \[[0-9]+\] (KU_.+) <-@dmp@-> (.*) <-@dmp@-> (.+)?`)
+	playerDetailPattern      = regexp.MustCompile(`playerdetail 99999999 (KU_.+) <-@dmp@-> (.*) <-@dmp@-> (\w+) <-@dmp@-> (\d+)`)
+	hostPattern              = regexp.MustCompile(`\[Host]`)
 )
+
+// OnlinePlayerDetail 在线玩家详情（含 entity ID，用于快捷指令选择目标）
+type OnlinePlayerDetail struct {
+	UID      string `json:"uid"`
+	Name     string `json:"name"`
+	Prefab   string `json:"prefab"`
+	EntityID int    `json:"entityID"`
+}
+
+// getOnlinePlayerDetail 获取在线玩家详情（含 entity ID）
+func (g *Game) getOnlinePlayerDetail(id int) ([]OnlinePlayerDetail, error) {
+	world, err := g.getWorldByID(id)
+	if err != nil {
+		return []OnlinePlayerDetail{}, err
+	}
+
+	// Lua 命令：获取 uid, name, prefab, entity GUID
+	luaCmd := `for i, v in ipairs(TheNet:GetClientTable()) do local p = v.userid and UserToPlayer(v.userid) print(string.format("playerdetail %s %s <-@dmp@-> %s <-@dmp@-> %s <-@dmp@-> %d", 99999999, v.userid, v.name, v.prefab, p and p.GUID or 0)) end`
+
+	if runtime.GOOS == "darwin" {
+		err = utils.DstSendCmdMacOS(luaCmd, g.clusterName, world.WorldName)
+	} else {
+		listScreenCmd := fmt.Sprintf("screen -S \"%s\" -p 0 -X stuff \"%s$(printf \\\\r)\"\n", world.screenName, strings.ReplaceAll(luaCmd, `"`, `\\\"`))
+		err = utils.BashCMD(listScreenCmd)
+	}
+	if err != nil {
+		return []OnlinePlayerDetail{}, err
+	}
+
+	time.Sleep(time.Second * 2)
+
+	logPath := fmt.Sprintf("%s/server_log.txt", world.worldPath)
+	return readPlayerDetailFromEnd(logPath)
+}
+
+func readPlayerDetailFromEnd(logPath string) ([]OnlinePlayerDetail, error) {
+	const bufferSize = 1024 * 4
+	file, err := os.Open(logPath)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	fileInfo, err := file.Stat()
+	if err != nil {
+		return nil, err
+	}
+
+	startPos := fileInfo.Size() - bufferSize
+	if startPos < 0 {
+		startPos = 0
+	}
+
+	_, err = file.Seek(startPos, 0)
+	if err != nil {
+		return nil, err
+	}
+
+	buffer := make([]byte, bufferSize)
+	n, err := file.Read(buffer)
+	if err != nil && err != io.EOF {
+		return nil, err
+	}
+
+	lines := strings.Split(string(buffer[:n]), "\n")
+
+	var linesAfterKeyword []string
+	keyword := "playerdetail 99999999"
+	var found bool
+
+	for i := len(lines) - 1; i >= 0; i-- {
+		line := lines[i]
+		linesAfterKeyword = append(linesAfterKeyword, line)
+		if strings.Contains(line, keyword) {
+			found = true
+			break
+		}
+	}
+
+	if !found {
+		return nil, fmt.Errorf("playerdetail not found")
+	}
+
+	var players []OnlinePlayerDetail
+	seen := map[string]bool{}
+
+	for _, line := range linesAfterKeyword {
+		if matches := playerDetailPattern.FindStringSubmatch(line); matches != nil {
+			if hostPattern.MatchString(line) {
+				continue
+			}
+			uid := strings.TrimSpace(matches[1])
+			if seen[uid] {
+				continue
+			}
+			seen[uid] = true
+
+			entityID, _ := strconv.Atoi(matches[4])
+			players = append(players, OnlinePlayerDetail{
+				UID:      uid,
+				Name:     strings.TrimSpace(matches[2]),
+				Prefab:   strings.TrimSpace(matches[3]),
+				EntityID: entityID,
+			})
+		}
+	}
+
+	return players, nil
+}
 
 func readPlayerListFromEnd(logPath string) ([]string, error) {
 	const bufferSize = 1024 * 4 // 4KB buffer
@@ -497,7 +656,7 @@ func (g *Game) getLastAliveTime(id int) (string, error) {
 		return "", err
 	}
 
-	_ = utils.ScreenCMD("print('DMP Keepalive')", world.screenName)
+	_ = utils.DstSendCmd(world.screenName, "print('DMP Keepalive')", g.clusterName, world.WorldName)
 	time.Sleep(1 * time.Second)
 
 	return getWorldLastTime(fmt.Sprintf("%s/server_log.txt", world.worldPath))

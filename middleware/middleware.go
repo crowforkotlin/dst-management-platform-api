@@ -17,6 +17,10 @@ import (
 func TokenCheck() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.Request.Header.Get("X-DMP-TOKEN")
+		// 后备：从 query parameter 读取 token
+		if token == "" {
+			token = c.Query("token")
+		}
 		claims, err := utils.ValidateJWT(token, []byte(db.JwtSecret))
 		if err != nil {
 			logger.Logger.Warnf("未授权的访问, DMP已拦截, ip为: %s", c.ClientIP())

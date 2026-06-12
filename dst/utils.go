@@ -9,7 +9,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"path/filepath"
 	"regexp"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -80,15 +82,42 @@ func (g *Game) initInfo() {
 		screenName := fmt.Sprintf("DMP_%s_%s", g.clusterName, world.WorldName)
 
 		var startCmd string
-		switch g.setting.StartType {
-		case "32-bit":
-			startCmd = fmt.Sprintf("cd dst/bin/ && screen -d -h 200 -m -S %s ./dontstarve_dedicated_server_nullrenderer -console -cluster %s -shard %s", screenName, g.clusterName, world.WorldName)
-		case "64-bit":
-			startCmd = fmt.Sprintf("cd dst/bin64/ && screen -d -h 200 -m -S %s ./dontstarve_dedicated_server_nullrenderer_x64 -console -cluster %s -shard %s", screenName, g.clusterName, world.WorldName)
-		case "luajit":
-			startCmd = fmt.Sprintf("cd dst/bin64/ && screen -d -h 200 -m -S %s ./dontstarve_dedicated_server_nullrenderer_x64_luajit -console -cluster %s -shard %s", screenName, g.clusterName, world.WorldName)
-		default:
-			startCmd = "exit 1"
+		if runtime.GOOS == "darwin" {
+			// macOS: 使用 FIFO 管道 + 直接运行二进制
+			dstAppDir := filepath.Join(
+				os.Getenv("HOME"),
+				"Library", "Application Support", "Steam", "steamapps", "common",
+				"Don't Starve Together Dedicated Server",
+			)
+			binPath := filepath.Join(dstAppDir, "dontstarve_dedicated_server_nullrenderer.app", "Contents", "MacOS", "dontstarve_dedicated_server_nullrenderer")
+			steamDir := filepath.Join(os.Getenv("HOME"), "Library", "Application Support", "Steam")
+			binMacOSDir := filepath.Join(dstAppDir, "dontstarve_dedicated_server_nullrenderer.app", "Contents", "MacOS")
+
+			scriptPath, err := utils.DstCreateLaunchScript(g.clusterName, world.WorldName, binPath)
+			if err != nil {
+				logger.Logger.Errorf("macOS: 创建 launch 脚本失败: %v", err)
+				startCmd = "exit 1"
+			} else {
+				startCmd = fmt.Sprintf(
+					"export SteamAppId=343050 && export SteamAppPath=%q && export SteamPath=%q && cd %q && nohup bash %q -console -cluster %s -shard %s > %s/server_log.txt 2>&1 &",
+					dstAppDir, steamDir, binMacOSDir,
+					scriptPath,
+					g.clusterName, world.WorldName,
+					worldPath,
+				)
+			}
+		} else {
+			// Linux: 使用 screen
+			switch g.setting.StartType {
+			case "32-bit":
+				startCmd = fmt.Sprintf("cd dst/bin/ && screen -d -h 200 -m -S %s ./dontstarve_dedicated_server_nullrenderer -console -cluster %s -shard %s", screenName, g.clusterName, world.WorldName)
+			case "64-bit":
+				startCmd = fmt.Sprintf("cd dst/bin64/ && screen -d -h 200 -m -S %s ./dontstarve_dedicated_server_nullrenderer_x64 -console -cluster %s -shard %s", screenName, g.clusterName, world.WorldName)
+			case "luajit":
+				startCmd = fmt.Sprintf("cd dst/bin64/ && screen -d -h 200 -m -S %s ./dontstarve_dedicated_server_nullrenderer_x64_luajit -console -cluster %s -shard %s", screenName, g.clusterName, world.WorldName)
+			default:
+				startCmd = "exit 1"
+			}
 		}
 
 		g.worldSaveData = append(g.worldSaveData, worldSaveData{
@@ -768,6 +797,10 @@ func uniqueSliceKeepOrderString(slice []string) []string {
 }
 
 func replaceDSTSOFile() {
+	// macOS 上使用 libsteam_api.dylib，不需要替换 steamclient.so（Linux专用逻辑）
+	if runtime.GOOS == "darwin" {
+		return
+	}
 	var err error
 	err = utils.BashCMD("mv dst/bin/lib32/steamclient.so dst/bin/lib32/steamclient.so.bak")
 	if err != nil {

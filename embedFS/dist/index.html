@@ -39,6 +39,331 @@
       document.documentElement.style.setProperty('--initial-loader-color', primaryColor)
     })()
   </script>
-</body>
+  <script>
+  // DMP 快捷指令面板 v2
+  (function() {
+    function getToken() {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.includes('user')) {
+          try { const v = JSON.parse(localStorage.getItem(key)); if (v && v.token) return v.token; } catch(e) {}
+        }
+      }
+      return '';
+    }
+    function getRoomID() {
+      const m = location.pathname.match(/\/(\d+)/) || location.hash.match(/\/(\d+)/);
+      return m ? parseInt(m[1]) : 4;
+    }
+    async function apiPost(path, body) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
+      try {
+        const res = await fetch(path, {
+          method: 'POST', signal: ctrl.signal,
+          headers: {'Content-Type':'application/json','X-DMP-TOKEN':getToken()},
+          body: JSON.stringify(body)
+        });
+        return await res.json();
+      } finally { clearTimeout(timer); }
+    }
+    async function apiGet(path) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
+      try {
+        const res = await fetch(path, { signal: ctrl.signal, headers: {'X-DMP-TOKEN':getToken()} });
+        return await res.json();
+      } finally { clearTimeout(timer); }
+    }
 
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes dmpspin{to{transform:rotate(360deg)}}
+      #dmp-panel{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:-apple-system,sans-serif;font-size:13px;}
+      #dmp-panel *{box-sizing:border-box;}
+      #dmp-toggle{width:48px;height:48px;border-radius:50%;background:#e94560;color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(233,69,96,.4);}
+      #dmp-body{display:none;position:absolute;bottom:60px;right:0;width:340px;background:#16213e;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.5);padding:16px;max-height:80vh;overflow-y:auto;}
+      #dmp-body.open{display:block;}
+      #dmp-body h3{color:#e94560;margin:0 0 10px;font-size:14px;}
+      #dmp-body label{color:#888;font-size:11px;display:block;margin:8px 0 3px;font-weight:600;}
+      #dmp-body select,#dmp-body input{width:100%;padding:6px 8px;border:1px solid #333;border-radius:6px;background:#0f3460;color:#eee;font-size:12px;outline:none;}
+      .dmp-row{display:flex;gap:5px;flex-wrap:wrap;margin:3px 0;}
+      .dmp-btn{padding:5px 10px;border:1px solid #1a4080;border-radius:5px;background:#0f3460;color:#ccc;font-size:11px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+      .dmp-btn:hover{background:#1a4080;color:#fff;border-color:#e94560;}
+      .dmp-sep{border:none;border-top:1px solid #1a3050;margin:10px 0;}
+      .dmp-player{display:flex;justify-content:space-between;align-items:center;padding:3px 6px;background:#0a1628;border-radius:4px;margin:2px 0;font-size:11px;}
+      .dmp-ref{max-height:160px;overflow-y:auto;background:#0a1628;border-radius:6px;padding:6px;margin-top:4px;}
+      .dmp-ref-item{padding:4px 6px;cursor:pointer;border-radius:3px;font-size:11px;font-family:monospace;color:#7ec8e3;margin:1px 0;}
+      .dmp-ref-item:hover{background:#1a3050;color:#fff;}
+      .dmp-ref-cat{color:#e94560;font-size:10px;font-weight:700;margin:6px 0 2px;padding:2px 6px;}
+      #dmp-toast{position:fixed;top:20px;right:20px;z-index:999999;padding:10px 20px;border-radius:8px;color:#fff;font-size:13px;display:none;}
+    `;
+    document.head.appendChild(style);
+
+    const toast = document.createElement('div'); toast.id = 'dmp-toast';
+    document.body.appendChild(toast);
+    function showToast(msg, ok) {
+      toast.textContent = msg; toast.style.background = ok ? '#2d6a4f' : '#6b2040';
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 3000);
+    }
+
+    const CMDS = [
+      {cat:'世界控制'},
+      {cmd:'c_save()',desc:'保存世界'},
+      {cmd:'c_regenerateworld()',desc:'重置世界'},
+      {cmd:'TheWorld:PushEvent("ms_setphase","day")',desc:'设为白天'},
+      {cmd:'TheWorld:PushEvent("ms_setphase","dusk")',desc:'设为黄昏'},
+      {cmd:'TheWorld:PushEvent("ms_setphase","night")',desc:'设为夜晚'},
+      {cmd:'TheWorld:PushEvent("ms_nextphase")',desc:'跳到下一时段'},
+      {cmd:'TheWorld:PushEvent("ms_setseason","autumn")',desc:'设为秋天'},
+      {cmd:'TheWorld:PushEvent("ms_setseason","winter")',desc:'设为冬天'},
+      {cmd:'TheWorld:PushEvent("ms_setseason","spring")',desc:'设为春天'},
+      {cmd:'TheWorld:PushEvent("ms_setseason","summer")',desc:'设为夏天'},
+      {cmd:'TheWorld.net.components.clock:OnUpdate(16*30*1)',desc:'跳过一天'},
+      {cmd:'TheWorld:PushEvent("ms_setclocksegs", {day=14,dusk=1,night=1})',desc:'超长白天'},
+      {cmd:'TheWorld:PushEvent("ms_setclocksegs", {day=1,dusk=1,night=14})',desc:'超长夜晚'},
+      {cmd:'TheWorld:PushEvent("ms_setseasonlength", {season="summer", length=20})',desc:'设置夏季长度20天'},
+      {cmd:'TheWorld:PushEvent("ms_setseasonlength", {season="winter", length=15})',desc:'设置冬季长度15天'},
+      {cmd:'TheSim:SetTimeScale(3)',desc:'3倍速'},
+      {cmd:'TheSim:SetTimeScale(1)',desc:'恢复正常速度'},
+      {cmd:'TheSim:SetTimeScale(0)',desc:'暂停时间(慎用)'},
+      {cat:'天气'},
+      {cmd:'TheWorld:PushEvent("ms_forceprecipitation", true)',desc:'开始降雨'},
+      {cmd:'TheWorld:PushEvent("ms_forceprecipitation", false)',desc:'停止降雨'},
+      {cmd:'TheWorld:PushEvent("ms_sendlightningstrike", Vector3(0,0,0))',desc:'闪电'},
+      {cmd:'TheWorld:PushEvent("ms_sendmoonstorm", 10)',desc:'月亮风暴'},
+      {cmd:'TheWorld:PushEvent("ms_forcequake")',desc:'地震'},
+      {cat:'物品给予'},
+      {cmd:'c_give("meat", 5)',desc:'给予5个肉'},
+      {cmd:'c_give("cookedmeat", 5)',desc:'给予5个熟肉'},
+      {cmd:'c_give("goldnugget", 10)',desc:'给予10个金块'},
+      {cmd:'c_give("cutgrass", 40)',desc:'给予40个草'},
+      {cmd:'c_give("twigs", 40)',desc:'给予40个树枝'},
+      {cmd:'c_give("log", 20)',desc:'给予20个木头'},
+      {cmd:'c_give("rocks", 20)',desc:'给予20个石头'},
+      {cmd:'c_give("cutreeds", 20)',desc:'给予20个芦苇'},
+      {cmd:'c_give("silk", 20)',desc:'给予20个蛛丝'},
+      {cat:'玩家状态'},
+      {cmd:'c_sethealth(1)',desc:'满血'},
+      {cmd:'c_setsanity(1)',desc:'满精神'},
+      {cmd:'c_sethunger(1)',desc:'满饱食'},
+      {cmd:'c_godmode()',desc:'上帝模式(无敌)'},
+      {cmd:'c_speed(3)',desc:'3倍移速'},
+      {cmd:'c_speed(1)',desc:'恢复正常移速'},
+      {cat:'生成生物'},
+      {cmd:'c_spawn("deerclops")',desc:'独眼巨鹿'},
+      {cmd:'c_spawn("dragonfly")',desc:'龙蝇'},
+      {cmd:'c_spawn("bearger")',desc:'熊獾'},
+      {cmd:'c_spawn("moose")',desc:'鹅鸭'},
+      {cmd:'c_spawn("treantguard")',desc:'树精守卫'},
+      {cmd:'c_spawn("beefalo")',desc:'牛'},
+      {cmd:'c_spawn("pighouse")',desc:'猪人房'},
+      {cat:'管理'},
+      {cmd:'TheNet:Kick("KU_xxx")',desc:'踢出玩家(替换UID)'},
+      {cmd:'TheNet:Ban("KU_xxx")',desc:'封禁玩家(替换UID)'},
+      {cmd:'c_announce("消息内容")',desc:'全服公告'},
+      {cmd:'c_rollback()',desc:'回档'},
+      {cmd:'c_reset()',desc:'重置服务器'},
+    ];
+
+    const panel = document.createElement('div');
+    panel.id = 'dmp-panel';
+    panel.innerHTML = '<div id="dmp-body">' +
+      '<h3>\u26a1 DMP \u5feb\u6377\u6307\u4ee4</h3>' +
+      '<label>\ud83c\udf0d \u4e16\u754c\u9009\u62e9</label>' +
+      '<select id="dmp-world" onchange="dmpRefreshPlayers()"><option value="">\u52a0\u8f7d\u4e2d...</option></select>' +
+      '<hr class="dmp-sep">' +
+      '<label>\u23f0 \u65f6\u95f4 / \u5b63\u8282</label>' +
+      '<div class="dmp-row">' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setPhase\',\'day\')">\u2600\ufe0f \u767d\u5929</button>' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setPhase\',\'dusk\')">\ud83c\udf05 \u9ec4\u660f</button>' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setPhase\',\'night\')">\ud83c\udf19 \u591c\u665a</button>' +
+        '<button class="dmp-btn" onclick="dmpExec(\'skipDay\',\'\')">\u23ed \u8df3\u4e00\u5929</button>' +
+      '</div>' +
+      '<div class="dmp-row">' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setSeason\',\'autumn\')">\ud83c\udf42 \u79cb</button>' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setSeason\',\'winter\')">\u2744\ufe0f \u51ac</button>' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setSeason\',\'spring\')">\ud83c\udf31 \u6625</button>' +
+        '<button class="dmp-btn" onclick="dmpExec(\'setSeason\',\'summer\')">\u2600\ufe0f \u590f</button>' +
+      '</div>' +
+      '<hr class="dmp-sep">' +
+      '<label>\ud83d\udc65 \u5728\u7ebf\u73a9\u5bb6 <button class="dmp-btn" style="float:right;padding:2px 8px" onclick="dmpRefreshPlayers()">\ud83d\udd04 \u5237\u65b0</button></label>' +
+      '<div id="dmp-players"><span style="color:#666">\u9009\u62e9\u4e16\u754c\u540e\u81ea\u52a8\u52a0\u8f7d</span></div>' +
+      '<div style="margin-top:8px;padding:8px;background:#0a1628;border-radius:6px;border:1px solid #1a3050">' +
+        '<div style="color:#888;font-size:10px;margin-bottom:4px;font-weight:600">\u624b\u52a8\u64cd\u4f5c (\u8f93\u5165UID\u5bf9\u79bb\u7ebf\u73a9\u5bb6\u4e5f\u6709\u6548)</div>' +
+        '<input id="dmp-uid" placeholder="\u8f93\u5165UID (\u5982 KU_xxx)" style="width:100%;margin:0 0 4px 0" />' +
+        '<div class="dmp-row">' +
+          '<button class="dmp-btn danger" onclick="dmpKickCustom()">\u8e22\u51fa</button>' +
+          '<button class="dmp-btn danger" onclick="dmpBanCustom()">\u5c01\u7981</button>' +
+          '<button class="dmp-btn" onclick="dmpUnbanCustom()">\u89e3\u5c01</button>' +
+        '</div>' +
+      '</div>' +
+      '<div style="margin-top:8px;padding:8px;background:#0a1628;border-radius:6px;border:1px solid #1a3050">' +
+        '<div style="color:#888;font-size:10px;margin-bottom:4px;font-weight:600">\ud83d\udce9 \u4f20\u9001 (TP)</div>' +
+        '<div style="display:flex;gap:4px;align-items:center">' +
+          '<select id="dmp-tp-from" style="flex:1;margin:0"><option value="">\u73a9\u5bb61</option></select>' +
+          '<span style="color:#666;font-size:11px">\u2192</span>' +
+          '<select id="dmp-tp-to" style="flex:1;margin:0"><option value="">\u73a9\u5bb62</option></select>' +
+          '<button class="dmp-btn" onclick="dmpTeleport()">TP</button>' +
+        '</div>' +
+      '</div>' +
+      '<hr class="dmp-sep">' +
+      '<label>\ud83d\udd27 \u81ea\u5b9a\u4e49\u6307\u4ee4 <span style="color:#555;font-weight:400">(\u70b9\u4e0b\u65b9\u6307\u4ee4\u81ea\u52a8\u586b\u5165)</span></label>' +
+      '<input id="dmp-cmd" placeholder="\u8f93\u5165\u6216\u9009\u62e9\u6307\u4ee4..." />' +
+      '<div class="dmp-row" style="margin-top:5px">' +
+        '<button class="dmp-btn" onclick="dmpCustomCmd()">\u25b6 \u6267\u884c</button>' +
+        '<button class="dmp-btn" onclick="dmpFillCmd(\'c_save()\')">\ud83d\udcbe \u4fdd\u5b58</button>' +
+        '<button class="dmp-btn" onclick="dmpFillCmd(\'c_rollback()\')">\u23ea \u56de\u6863</button>' +
+      '</div>' +
+      '<div class="dmp-ref" id="dmp-ref"></div>' +
+      '<hr class="dmp-sep">' +
+      '<label>\ud83d\udce6 \u6a21\u7ec4</label>' +
+      '<div class="dmp-row">' +
+        '<button class="dmp-btn" id="dmp-mod-btn" onclick="dmpUpdateMods()">\ud83d\udd04 \u4e00\u952e\u66f4\u65b0\u6240\u6709\u6a21\u7ec4</button>' +
+      '</div>' +
+    '</div>' +
+    '<button id="dmp-toggle" onclick="dmpToggle()">\u26a1</button>';
+    document.body.appendChild(panel);
+
+    // 渲染指令参考
+    const refEl = document.getElementById('dmp-ref');
+    CMDS.forEach(c => {
+      const d = document.createElement('div');
+      if (c.cat) { d.className = 'dmp-ref-cat'; d.textContent = c.cat; }
+      else { d.className = 'dmp-ref-item'; d.textContent = c.cmd; d.title = c.desc;
+        d.onclick = () => { document.getElementById('dmp-cmd').value = c.cmd; document.getElementById('dmp-cmd').focus(); };
+      }
+      refEl.appendChild(d);
+    });
+
+    let panelOpen = false;
+    let dmpRefreshTimer = null;
+    window.dmpToggle = function() {
+      panelOpen = !panelOpen;
+      document.getElementById('dmp-body').classList.toggle('open', panelOpen);
+      if (panelOpen) { dmpLoadWorlds(); startAutoRefresh(); }
+      else { stopAutoRefresh(); }
+    };
+
+    function startAutoRefresh() {
+      stopAutoRefresh();
+      dmpRefreshTimer = setInterval(() => {
+        if (panelOpen && getWorldID()) dmpRefreshPlayers();
+      }, 15000);
+    }
+    function stopAutoRefresh() {
+      if (dmpRefreshTimer) { clearInterval(dmpRefreshTimer); dmpRefreshTimer = null; }
+    }
+
+    function getWorldID() {
+      const sel = document.getElementById('dmp-world');
+      return sel ? parseInt(sel.value) || 0 : 0;
+    }
+
+    window.dmpLoadWorlds = async function() {
+      const sel = document.getElementById('dmp-world');
+      try {
+        const data = await apiGet('/v3/dashboard/info/base?roomID=' + getRoomID());
+        if (data.code === 200 && data.data && data.data.worlds) {
+          sel.innerHTML = '';
+          data.data.worlds.forEach(w => {
+            const opt = document.createElement('option');
+            opt.value = w.id;
+            opt.textContent = (w.isMaster ? '\u2b50 ' : '') + w.worldName + (w.status ? ' \u2705' : ' \u274c');
+            sel.appendChild(opt);
+          });
+          dmpRefreshPlayers();
+        } else {
+          sel.innerHTML = '<option value="">' + (data.message || '\u52a0\u8f7d\u5931\u8d25') + '</option>';
+        }
+      } catch(e) {
+        sel.innerHTML = '<option value="">\u52a0\u8f7d\u5931\u8d25(\u8bf7\u5237\u65b0\u9875\u9762)</option>';
+      }
+    };
+
+    window.dmpExec = async function(type, extra) {
+      const worldID = getWorldID();
+      if (!worldID) { showToast('\u8bf7\u5148\u9009\u62e9\u4e16\u754c', false); return; }
+      try {
+        const data = await apiPost('/v3/dashboard/exec/game', { type, roomID: getRoomID(), worldID, extra: extra || '' });
+        showToast(data.message || '\u5b8c\u6210', data.code === 200);
+      } catch(e) { showToast('\u6267\u884c\u5931\u8d25: ' + (e.name === 'AbortError' ? '\u8d85\u65f6' : e.message), false); }
+    };
+
+    window.dmpFillCmd = function(cmd) { document.getElementById('dmp-cmd').value = cmd; };
+    window.dmpCustomCmd = function() {
+      const cmd = document.getElementById('dmp-cmd').value.trim();
+      if (!cmd) { showToast('\u8bf7\u8f93\u5165\u6307\u4ee4', false); return; }
+      dmpExec('console', cmd);
+    };
+
+    window.dmpRefreshPlayers = async function() {
+      const container = document.getElementById('dmp-players');
+      const worldID = getWorldID();
+      if (!worldID) return;
+      container.innerHTML = '<span style="color:#666">\u52a0\u8f7d\u4e2d...</span>';
+      try {
+        const data = await apiGet('/v3/player/online_detail?roomID=' + getRoomID() + '&worldID=' + worldID);
+        if (data.code === 200 && data.data && data.data.length > 0) {
+          container.innerHTML = data.data.map(p =>
+            '<div class="dmp-player"><span>' + p.name + ' <span style="color:#666">(' + p.prefab + ')</span></span>' +
+            '<button class="dmp-btn" onclick="dmpKick(\'' + p.uid + '\',\'' + p.name.replace(/'/g,"") + '\')">\u8e22\u51fa</button></div>'
+          ).join('');
+          // 更新TP下拉列表
+          const opts = '<option value="">\u9009\u62e9\u73a9\u5bb6</option>' + data.data.filter(p => p.uid !== '[Host]').map(p =>
+            '<option value="' + p.uid + '">' + p.name + '</option>'
+          ).join('');
+          document.getElementById('dmp-tp-from').innerHTML = opts;
+          document.getElementById('dmp-tp-to').innerHTML = opts;
+        } else { container.innerHTML = '<span style="color:#666">\u65e0\u5728\u7ebf\u73a9\u5bb6</span>'; }
+      } catch(e) { container.innerHTML = '<span style="color:#c00">\u83b7\u53d6\u5931\u8d25</span>'; }
+    };
+
+    window.dmpKick = function(uid, name) {
+      if (!confirm('\u786e\u5b9a\u8e22\u51fa ' + name + '?')) return;
+      dmpExec('console', 'TheNet:Kick("' + uid + '")');
+    };
+
+    window.dmpKickCustom = function() {
+      const uid = document.getElementById('dmp-uid').value.trim();
+      if (!uid) { showToast('\u8bf7\u8f93\u5165UID', false); return; }
+      if (!confirm('\u786e\u5b9a\u8e22\u51fa ' + uid + '?')) return;
+      dmpExec('console', 'TheNet:Kick("' + uid + '")');
+    };
+
+    window.dmpBanCustom = function() {
+      const uid = document.getElementById('dmp-uid').value.trim();
+      if (!uid) { showToast('\u8bf7\u8f93\u5165UID', false); return; }
+      if (!confirm('\u786e\u5b9a\u5c01\u7981 ' + uid + '?')) return;
+      dmpExec('console', 'TheNet:Ban("' + uid + '")');
+    };
+
+    window.dmpUnbanCustom = function() {
+      const uid = document.getElementById('dmp-uid').value.trim();
+      if (!uid) { showToast('\u8bf7\u8f93\u5165UID', false); return; }
+      dmpExec('console', 'TheNet:Unban("' + uid + '")');
+    };
+
+    window.dmpTeleport = function() {
+      const from = document.getElementById('dmp-tp-from').value;
+      const to = document.getElementById('dmp-tp-to').value;
+      if (!from || !to) { showToast('\u8bf7\u9009\u62e9\u4e24\u4e2a\u73a9\u5bb6', false); return; }
+      if (from === to) { showToast('\u4e0d\u80fd\u4f20\u9001\u5230\u81ea\u5df1', false); return; }
+      dmpExec('console', 'for k,v in pairs(AllPlayers) do if v.userid=="' + from + '" then p2=nil; for k2,v2 in pairs(AllPlayers) do if v2.userid=="' + to + '" then p2=v2 end end; if p2 then v.Transform:SetPosition(p2.Transform:GetWorldPosition()) end end end');
+    };
+
+    window.dmpUpdateMods = async function() {
+      const btn = document.getElementById('dmp-mod-btn');
+      btn.disabled = true; btn.textContent = '\u66f4\u65b0\u4e2d...';
+      try {
+        const data = await apiPost('/v3/mod/update_all', {roomID: getRoomID()});
+        showToast(data.message || '\u5b8c\u6210', data.code === 200);
+        btn.textContent = data.code === 200 ? '\u2705 \u5b8c\u6210' : '\u274c \u5931\u8d25';
+      } catch(e) { showToast('\u66f4\u65b0\u5931\u8d25', false); btn.textContent = '\u274c \u5931\u8d25'; }
+      setTimeout(() => { btn.textContent = '\ud83d\udd04 \u4e00\u952e\u66f4\u65b0\u6240\u6709\u6a21\u7ec4'; btn.disabled = false; }, 4000);
+    };
+  })();
+  </script>
+</body>
 </html>

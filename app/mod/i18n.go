@@ -35,6 +35,8 @@ func NewExtendedI18n() *ExtendedI18n {
 	i.ZH["mod disable fail"] = "模组禁用失败"
 	i.ZH["mod disable success"] = "模组禁用成功"
 	i.ZH["get enabled mod fail"] = "获取启用模组失败"
+	i.ZH["no mods to update"] = "没有可更新的模组"
+	i.ZH["update all mods result"] = "模组更新完成：成功 %d，失败 %d，共 %d"
 
 	i.EN["downloading"] = "Downloading Mod"
 	i.EN["update completed"] = "Update Completed"
@@ -47,6 +49,8 @@ func NewExtendedI18n() *ExtendedI18n {
 	i.EN["mod disable fail"] = "Mod Disable Fail"
 	i.EN["mod disable success"] = "Mod Disable Success"
 	i.EN["get enabled mod fail"] = "Get Enabled Mods Fail"
+	i.EN["no mods to update"] = "No Mods to Update"
+	i.EN["update all mods result"] = "Mod Update Complete: %d succeeded, %d failed, %d total"
 
 	return i
 }

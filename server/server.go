@@ -124,6 +124,12 @@ func Run() {
 	tools.NewHandler(userDao, roomDao, worldDao, roomSettingDao).RegisterRoutes(r)
 	player.NewHandler(userDao, roomDao, worldDao, roomSettingDao, uidMapDao, globalSettingDao).RegisterRoutes(r)
 
+	// 模组一键更新页面
+	r.GET("/mod-update", func(c *gin.Context) {
+		c.Header("Content-Type", "text/html; charset=utf-8")
+		c.String(200, modUpdatePageHTML)
+	})
+
 	r.Use(static.ServeEmbed("dist", embedFS.Dist))
 
 	// 启动服务器
@@ -184,29 +190,33 @@ func macOSAutoSetup() {
 	}
 
 	// 2. 创建 dst/bin64/ wrapper 脚本 (64-bit 和 luajit)
-	if !utils.FileDirectoryExists("dst/bin64") {
-		if err := os.MkdirAll("dst/bin64/lib64", 0755); err != nil {
-			logger.Logger.Errorf("macOS: 创建 dst/bin64 失败: %v", err)
+	// 总是更新以确保环境变量正确
+	if err := os.MkdirAll("dst/bin64/lib64", 0755); err != nil {
+		logger.Logger.Errorf("macOS: 创建 dst/bin64 失败: %v", err)
+	} else {
+		// Steam 路径
+		steamDir := filepath.Join(os.Getenv("HOME"), "Library", "Application Support", "Steam")
+
+		// wrapper 脚本: 设置 Steam 环境变量 + cd 到真实二进制目录并用 exec 执行
+		// SteamAppId: DST 专用服务器 AppID (343050)
+		// SteamAppPath/SteamPath: 帮助 Steam 客户端 IPC 定位
+		wrapperScript := fmt.Sprintf(
+			"#!/bin/bash\nexport SteamAppId=343050\nexport SteamAppPath=%q\nexport SteamPath=%q\ncd %q && exec ./%s \"$@\"\n",
+			dstAppDir, steamDir, binMacOSDir, binName,
+		)
+		// 64-bit 版本
+		bin64Script := filepath.Join("dst", "bin64", "dontstarve_dedicated_server_nullrenderer_x64")
+		if err := os.WriteFile(bin64Script, []byte(wrapperScript), 0755); err != nil {
+			logger.Logger.Errorf("macOS: 创建 bin64 wrapper 失败: %v", err)
 		} else {
-			// wrapper 脚本: cd 到真实二进制目录并用 exec 执行
-			wrapperScript := fmt.Sprintf(
-				"#!/bin/bash\ncd %q && exec ./%s \"$@\"\n",
-				binMacOSDir, binName,
-			)
-			// 64-bit 版本
-			bin64Script := filepath.Join("dst", "bin64", "dontstarve_dedicated_server_nullrenderer_x64")
-			if err := os.WriteFile(bin64Script, []byte(wrapperScript), 0755); err != nil {
-				logger.Logger.Errorf("macOS: 创建 bin64 wrapper 失败: %v", err)
-			} else {
-				logger.Logger.Infof("macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper")
-			}
-			// luajit 版本
-			luajitScript := filepath.Join("dst", "bin64", "dontstarve_dedicated_server_nullrenderer_x64_luajit")
-			if err := os.WriteFile(luajitScript, []byte(wrapperScript), 0755); err != nil {
-				logger.Logger.Errorf("macOS: 创建 bin64 luajit wrapper 失败: %v", err)
-			} else {
-				logger.Logger.Infof("macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper")
-			}
+			logger.Logger.Infof("macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper")
+		}
+		// luajit 版本
+		luajitScript := filepath.Join("dst", "bin64", "dontstarve_dedicated_server_nullrenderer_x64_luajit")
+		if err := os.WriteFile(luajitScript, []byte(wrapperScript), 0755); err != nil {
+			logger.Logger.Errorf("macOS: 创建 bin64 luajit wrapper 失败: %v", err)
+		} else {
+			logger.Logger.Infof("macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper")
 		}
 	}
 

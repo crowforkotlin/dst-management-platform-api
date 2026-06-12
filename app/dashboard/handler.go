@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -226,6 +227,44 @@ func (h *Handler) execGamePost(c *gin.Context) {
 
 		c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "exec success"), "data": nil})
 		return
+	case "setPhase":
+		// 设置时间段: day/dusk/night
+		if reqForm.Extra == "" {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "exec fail"), "data": nil})
+			return
+		}
+		cmd := fmt.Sprintf(`TheWorld:PushEvent("ms_setphase","%s")`, reqForm.Extra)
+		err = game.ConsoleCmd(cmd, reqForm.WorldID)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "exec fail"), "data": nil})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "exec success"), "data": nil})
+		return
+	case "setSeason":
+		// 设置季节: summer/autumn/winter/spring
+		if reqForm.Extra == "" {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "exec fail"), "data": nil})
+			return
+		}
+		cmd := fmt.Sprintf(`TheWorld:PushEvent("ms_setseason","%s")`, reqForm.Extra)
+		err = game.ConsoleCmd(cmd, reqForm.WorldID)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "exec fail"), "data": nil})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "exec success"), "data": nil})
+		return
+	case "skipDay":
+		// 跳过一天
+		cmd := `TheWorld.net.components.clock:OnUpdate(16*30*1)`
+		err = game.ConsoleCmd(cmd, reqForm.WorldID)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "exec fail"), "data": nil})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "exec success"), "data": nil})
+		return
 	default:
 		c.JSON(http.StatusOK, gin.H{"code": 400, "message": message.Get(c, "bad request"), "data": nil})
 		return
@@ -286,15 +325,45 @@ func (h *Handler) infoBaseGet(c *gin.Context) {
 		Players     []db.PlayerInfo     `json:"players"`
 	}
 
-	db.PlayersStatisticMutex.Lock()
-	defer db.PlayersStatisticMutex.Unlock()
-
+	// 实时获取在线玩家列表（而非缓存数据）
 	var players []db.PlayerInfo
+	var fetchedRealtime bool
 
-	if len(db.PlayersStatistic[reqForm.RoomID]) > 0 {
-		players = db.PlayersStatistic[reqForm.RoomID][len(db.PlayersStatistic[reqForm.RoomID])-1].PlayerInfo
-	} else {
-		players = []db.PlayerInfo{}
+	for _, world := range *worlds {
+		if game.WorldUpStatus(world.ID) {
+			rawPlayers, err := game.GetOnlinePlayerList(world.ID)
+			if err == nil && len(rawPlayers) > 0 {
+				for _, p := range rawPlayers {
+					parts := strings.Split(p, "<-@dmp@->")
+					if len(parts) >= 3 {
+						players = append(players, db.PlayerInfo{
+							UID:      strings.TrimSpace(parts[0]),
+							Nickname: strings.TrimSpace(parts[1]),
+							Prefab:   strings.TrimSpace(parts[2]),
+						})
+					}
+				}
+				fetchedRealtime = true
+				break
+			}
+		}
+	}
+
+	// 如果服务器未运行或获取失败，回退到缓存数据
+	if !fetchedRealtime {
+		db.PlayersStatisticMutex.Lock()
+		if len(db.PlayersStatistic[reqForm.RoomID]) > 0 {
+			lastEntry := db.PlayersStatistic[reqForm.RoomID][len(db.PlayersStatistic[reqForm.RoomID])-1]
+			// 如果缓存数据超过 2 分钟，视为过期，返回空列表
+			if utils.GetTimestamp()-lastEntry.Timestamp < 120000 {
+				players = lastEntry.PlayerInfo
+			} else {
+				players = []db.PlayerInfo{}
+			}
+		} else {
+			players = []db.PlayerInfo{}
+		}
+		db.PlayersStatisticMutex.Unlock()
 	}
 
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "success", "data": Data{

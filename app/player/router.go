@@ -14,6 +14,7 @@ func (h *Handler) RegisterRoutes(r *gin.Engine) {
 		player.Use(middleware.TokenCheck())
 		{
 			player.GET("/online", h.onlineGet)
+			player.GET("/online_detail", h.onlineDetailGet)
 			player.GET("/list", h.listGet)
 			player.POST("/list", h.listPost)
 			player.GET("/uidmap", h.uidMapGet)

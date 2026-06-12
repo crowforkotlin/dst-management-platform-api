@@ -161,6 +161,11 @@ func (g *Game) GetOnlinePlayerList(id int) ([]string, error) {
 	return g.getOnlinePlayerList(id)
 }
 
+// GetOnlinePlayerDetail 获取在线玩家详情（含 entity ID，用于快捷指令选择目标）
+func (g *Game) GetOnlinePlayerDetail(id int) ([]OnlinePlayerDetail, error) {
+	return g.getOnlinePlayerDetail(id)
+}
+
 // GetLastAliveTime 获取指定世界最后的存活时间
 func (g *Game) GetLastAliveTime(id int) (string, error) {
 	return g.getLastAliveTime(id)

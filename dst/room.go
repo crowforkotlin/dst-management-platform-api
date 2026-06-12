@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -31,6 +32,7 @@ type SeasonLength struct {
 }
 
 type RoomSessionInfo struct {
+	Loaded       bool         `json:"loaded"`
 	Cycles       int          `json:"cycles"`
 	Phase        string       `json:"phase"`
 	Season       string       `json:"season"`
@@ -167,7 +169,8 @@ func (g *Game) reset(force bool) error {
 
 	} else {
 		resetCmd := fmt.Sprintf("c_regenerateworld()")
-		return utils.ScreenCMD(resetCmd, g.worldSaveData[0].screenName)
+		world := g.worldSaveData[0]
+		return utils.DstSendCmd(world.screenName, resetCmd, g.clusterName, world.WorldName)
 	}
 }
 
@@ -176,7 +179,7 @@ func (g *Game) announce(message string) error {
 	s = strings.ReplaceAll(s, "\"", "")
 	cmd := fmt.Sprintf("c_announce('%s')", s)
 	for _, world := range g.worldSaveData {
-		err := utils.ScreenCMD(cmd, world.screenName)
+		err := utils.DstSendCmd(world.screenName, cmd, g.clusterName, world.WorldName)
 		if err == nil {
 			return err
 		}
@@ -190,7 +193,7 @@ func (g *Game) systemMsg(message string) error {
 	s = strings.ReplaceAll(s, "\"", "")
 	cmd := fmt.Sprintf("TheNet:SystemMessage('%s')", s)
 	for _, world := range g.worldSaveData {
-		err := utils.ScreenCMD(cmd, world.screenName)
+		err := utils.DstSendCmd(world.screenName, cmd, g.clusterName, world.WorldName)
 		if err == nil {
 			return err
 		}
@@ -201,9 +204,10 @@ func (g *Game) systemMsg(message string) error {
 
 func (g *Game) sessionInfo() *RoomSessionInfo {
 	roomSessionInfo := RoomSessionInfo{
-		Season: "error",
-		Cycles: -1,
-		Phase:  "error",
+		Loaded: false,
+		Season: "autumn",
+		Cycles: 0,
+		Phase:  "day",
 	}
 
 	var (
@@ -243,6 +247,7 @@ func (g *Game) sessionInfo() *RoomSessionInfo {
 	// 获取 Lua 脚本的返回值
 	lv := L.Get(-1)
 	if tbl, ok := lv.(*lua.LTable); ok {
+		roomSessionInfo.Loaded = true
 		// 获取 clock 表
 		clockTable := tbl.RawGet(lua.LString("clock"))
 		if clock, ok := clockTable.(*lua.LTable); ok {
@@ -512,7 +517,26 @@ func findLatestMetaFile(directory string) (string, error) {
 }
 
 func (g *Game) runningScreen() ([]string, error) {
-	// 使用screen -ls获取正在运行的screen会话，兼容macOS和Linux
+	if runtime.GOOS == "darwin" {
+		// macOS: 通过 pgrep 查找正在运行的 DST 进程
+		cmd := fmt.Sprintf("pgrep -af 'dontstarve_dedicated_server_nullrenderer.*Cluster_%d' | awk '{for(i=NF;i>=1;i--) if($i ~ /-shard/) {print $(i+1); break}}'", g.room.ID)
+		out, _, _ := utils.BashCMDOutput(cmd)
+		shardNames := strings.TrimSpace(out)
+		if shardNames == "" {
+			return []string{}, nil
+		}
+		// 返回格式与 Linux 保持一致: DMP_Cluster_X_WorldName
+		var result []string
+		for _, shard := range strings.Split(shardNames, "\n") {
+			shard = strings.TrimSpace(shard)
+			if shard != "" {
+				result = append(result, fmt.Sprintf("DMP_Cluster_%d_%s", g.room.ID, shard))
+			}
+		}
+		return result, nil
+	}
+
+	// Linux: 使用 screen -ls
 	cmd := fmt.Sprintf("screen -ls | grep 'DMP_Cluster_%d_' | awk '{print $1}'", g.room.ID)
 	out, _, _ := utils.BashCMDOutput(cmd)
 	screenNamesStr := strings.TrimSpace(out)

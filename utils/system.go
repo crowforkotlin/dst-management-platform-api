@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"time"
 
@@ -831,4 +832,133 @@ func GetFileFirstNLines(filename string, n int) []string {
 	}
 
 	return lines
+}
+
+
+// ============== //
+// macOS DST 进程管理（无 screen 方案）
+// ============== //
+
+// DstPipeDir 返回 FIFO 管道目录（绝对路径）
+func DstPipeDir() string {
+	cwd, _ := os.Getwd()
+	return filepath.Join(cwd, "dmp_files", "dst_pipes")
+}
+
+// DstPipePath 返回指定世界的 FIFO 管道路径（绝对路径）
+func DstPipePath(clusterName, worldName string) string {
+	return filepath.Join(DstPipeDir(), fmt.Sprintf("%s_%s.fifo", clusterName, worldName))
+}
+
+// DstPidPath 返回指定世界的 PID 文件路径（绝对路径）
+func DstPidPath(clusterName, worldName string) string {
+	return filepath.Join(DstPipeDir(), fmt.Sprintf("%s_%s.pid", clusterName, worldName))
+}
+
+// DstEnsurePipe 确保 FIFO 管道目录存在
+func DstEnsurePipe() error {
+	return EnsureDirExists(DstPipeDir())
+}
+
+// DstCreateLaunchScript 为 macOS 生成世界的启动脚本
+// 脚本功能：创建 FIFO → tail -f 管道到二进制 stdin → 记录 PID
+func DstCreateLaunchScript(clusterName, worldName, binPath string) (string, error) {
+	if err := DstEnsurePipe(); err != nil {
+		return "", fmt.Errorf("创建管道目录失败: %w", err)
+	}
+
+	pipePath := DstPipePath(clusterName, worldName)
+	pidPath := DstPidPath(clusterName, worldName)
+
+	scriptContent := fmt.Sprintf(`#!/bin/bash
+PIPE=%q
+PIDFILE=%q
+BIN=%q
+
+# 清理旧文件
+rm -f "$PIPE" "$PIDFILE"
+
+# 创建 FIFO
+mkfifo "$PIPE"
+
+# 记录 PID
+echo $$ > "$PIDFILE"
+
+# 打开 FIFO 读写模式（fd 3），保持管道不关闭，不依赖 tail -f
+exec 3<>"$PIPE"
+
+# 启动 DST 二进制，从 FIFO 读取 stdin
+"$BIN" "$@" <"$PIPE"
+
+# 进程退出后清理
+exec 3>&-
+rm -f "$PIPE" "$PIDFILE"
+`, pipePath, pidPath, binPath)
+
+	scriptPath := filepath.Join(DstPipeDir(), fmt.Sprintf("%s_%s.sh", clusterName, worldName))
+	if err := os.WriteFile(scriptPath, []byte(scriptContent), 0755); err != nil {
+		return "", fmt.Errorf("创建启动脚本失败: %w", err)
+	}
+
+	return scriptPath, nil
+}
+
+// DstSendCmd 向 DST 世界发送控制台命令（跨平台）
+// Linux: 通过 screen stuff 发送
+// macOS: 通过写入 FIFO 管道发送
+func DstSendCmd(screenName, cmd, clusterName, worldName string) error {
+	if runtime.GOOS == "darwin" {
+		return DstSendCmdMacOS(cmd, clusterName, worldName)
+	}
+	return ScreenCMD(cmd, screenName)
+}
+
+// DstSendCmdMacOS 通过 FIFO 管道向 macOS DST 进程发送命令
+func DstSendCmdMacOS(cmd, clusterName, worldName string) error {
+	pipePath := DstPipePath(clusterName, worldName)
+	if !FileDirectoryExists(pipePath) {
+		return fmt.Errorf("FIFO 管道不存在: %s", pipePath)
+	}
+
+	file, err := os.OpenFile(pipePath, os.O_WRONLY, 0)
+	if err != nil {
+		return fmt.Errorf("打开 FIFO 管道失败: %w", err)
+	}
+	defer file.Close()
+
+	_, err = fmt.Fprintln(file, cmd)
+	return err
+}
+
+// DstIsRunning 检查指定世界是否正在运行（跨平台）
+// Linux: 通过 screen -ls 检查
+// macOS: 通过 pgrep 检查进程
+func DstIsRunning(screenName, clusterName, worldName string) bool {
+	if runtime.GOOS == "darwin" {
+		return DstIsRunningMacOS(clusterName, worldName)
+	}
+	// Linux: 检查 screen 会话是否存在
+	cmd := fmt.Sprintf("screen -ls | grep '%s'", screenName)
+	err := BashCMD(cmd)
+	return err == nil
+}
+
+// DstIsRunningMacOS 通过 pgrep 检查 macOS DST 进程是否运行
+func DstIsRunningMacOS(clusterName, worldName string) bool {
+	cmd := fmt.Sprintf("pgrep -f 'dontstarve_dedicated_server_nullrenderer.*-cluster %s.*-shard %s' > /dev/null 2>&1", clusterName, worldName)
+	err := BashCMD(cmd)
+	return err == nil
+}
+
+// DstStopWorld 停止指定世界的 DST 进程（macOS 专用）
+// 通过进程名匹配 cluster+shard 杀死 DST 进程
+func DstStopWorld(clusterName, worldName string) error {
+	// 通过进程名匹配杀死 DST 进程
+	cleanupCmd := fmt.Sprintf(
+		"ps -ef | grep dontstarve_dedicated_server_nullrenderer | grep '%s' | grep '%s' | grep -v grep | awk '{print $2}' | xargs kill -9 2>/dev/null",
+		clusterName, worldName,
+	)
+	_ = BashCMD(cleanupCmd)
+
+	return nil
 }

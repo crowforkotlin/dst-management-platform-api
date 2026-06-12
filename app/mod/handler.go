@@ -5,6 +5,7 @@ import (
 	"dst-management-platform-api/dst"
 	"dst-management-platform-api/logger"
 	"dst-management-platform-api/utils"
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -489,4 +490,72 @@ func (h *Handler) acfDelete(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "delete success"), "data": nil})
+}
+
+
+// updateAllPost 一键更新所有已配置的模组（从 Steam 工坊重新下载最新版本）
+func (h *Handler) updateAllPost(c *gin.Context) {
+	type ReqForm struct {
+		RoomID int `json:"roomID"`
+	}
+	var reqForm ReqForm
+	if err := c.ShouldBindJSON(&reqForm); err != nil {
+		logger.Logger.Infof("请求参数错误: %v, api: %s", err, c.Request.URL.Path)
+		c.JSON(http.StatusOK, gin.H{"code": 400, "message": message.Get(c, "bad request"), "data": nil})
+		return
+	}
+
+	if !h.hasPermission(c, strconv.Itoa(reqForm.RoomID)) {
+		c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "permission needed"), "data": nil})
+		return
+	}
+
+	room, worlds, roomSetting, err := dao.FetchGameInfo(reqForm.RoomID)
+	if err != nil {
+		logger.Logger.Errorf("获取基本信息失败, err: %v", err)
+		c.JSON(http.StatusOK, gin.H{"code": 500, "message": message.Get(c, "database error"), "data": nil})
+		return
+	}
+
+	game := dst.NewGameController(room, worlds, roomSetting, c.Request.Header.Get("X-I18n-Lang"))
+
+	// 从配置中获取所有已启用的模组（而非仅已下载的）
+	if len(*worlds) == 0 {
+		c.JSON(http.StatusOK, gin.H{"code": 201, "message": message.Get(c, "no worlds found"), "data": nil})
+		return
+	}
+	enabledMods, err := game.GetEnabledMods((*worlds)[0].ID)
+	if err != nil || len(enabledMods) == 0 {
+		c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "no mods to update"), "data": gin.H{"success": 0, "fail": 0, "total": 0}})
+		return
+	}
+
+	var successCount, failCount int
+	var failIDs []int
+
+	for _, mod := range enabledMods {
+		if mod.ID == 0 {
+			continue // 跳过 client_mods_disabled
+		}
+
+		logger.Logger.Infof("正在更新模组 ID: %d", mod.ID)
+
+		// 空 FileURL 表示 UGC 模组，从 Steam 工坊下载
+		err, _ := game.DownloadMod(mod.ID, "")
+		if err != nil {
+			logger.Logger.Errorf("更新模组失败: ID: %d, err: %v", mod.ID, err)
+			failCount++
+			failIDs = append(failIDs, mod.ID)
+		} else {
+			successCount++
+		}
+	}
+
+	total := successCount + failCount
+	msg := fmt.Sprintf("模组更新完成：成功 %d，失败 %d，共 %d", successCount, failCount, total)
+	if failCount > 0 {
+		c.JSON(http.StatusOK, gin.H{"code": 201, "message": msg, "data": gin.H{"success": successCount, "fail": failCount, "total": total, "failIDs": failIDs}})
+	} else {
+		c.JSON(http.StatusOK, gin.H{"code": 200, "message": msg, "data": gin.H{"success": successCount, "fail": failCount, "total": total}})
+	}
 }
