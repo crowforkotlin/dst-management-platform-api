@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -325,46 +324,15 @@ func (h *Handler) infoBaseGet(c *gin.Context) {
 		Players     []db.PlayerInfo     `json:"players"`
 	}
 
-	// 实时获取在线玩家列表（而非缓存数据）
+	// 使用缓存的玩家数据（快速响应），实时数据由悬浮面板单独获取
 	var players []db.PlayerInfo
-	var fetchedRealtime bool
-
-	for _, world := range *worlds {
-		if game.WorldUpStatus(world.ID) {
-			rawPlayers, err := game.GetOnlinePlayerList(world.ID)
-			if err == nil && len(rawPlayers) > 0 {
-				for _, p := range rawPlayers {
-					parts := strings.Split(p, "<-@dmp@->")
-					if len(parts) >= 3 {
-						players = append(players, db.PlayerInfo{
-							UID:      strings.TrimSpace(parts[0]),
-							Nickname: strings.TrimSpace(parts[1]),
-							Prefab:   strings.TrimSpace(parts[2]),
-						})
-					}
-				}
-				fetchedRealtime = true
-				break
-			}
-		}
+	db.PlayersStatisticMutex.Lock()
+	if len(db.PlayersStatistic[reqForm.RoomID]) > 0 {
+		players = db.PlayersStatistic[reqForm.RoomID][len(db.PlayersStatistic[reqForm.RoomID])-1].PlayerInfo
+	} else {
+		players = []db.PlayerInfo{}
 	}
-
-	// 如果服务器未运行或获取失败，回退到缓存数据
-	if !fetchedRealtime {
-		db.PlayersStatisticMutex.Lock()
-		if len(db.PlayersStatistic[reqForm.RoomID]) > 0 {
-			lastEntry := db.PlayersStatistic[reqForm.RoomID][len(db.PlayersStatistic[reqForm.RoomID])-1]
-			// 如果缓存数据超过 2 分钟，视为过期，返回空列表
-			if utils.GetTimestamp()-lastEntry.Timestamp < 120000 {
-				players = lastEntry.PlayerInfo
-			} else {
-				players = []db.PlayerInfo{}
-			}
-		} else {
-			players = []db.PlayerInfo{}
-		}
-		db.PlayersStatisticMutex.Unlock()
-	}
+	db.PlayersStatisticMutex.Unlock()
 
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "success", "data": Data{
 		Room:        *room,

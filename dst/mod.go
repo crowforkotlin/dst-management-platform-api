@@ -269,6 +269,7 @@ type DownloadedMod struct {
 	ServerSize string `json:"serverSize"`
 	FileURL    string `json:"file_url"`
 	PreviewURL string `json:"preview_url"`
+	Enabled    bool   `json:"enabled"`
 }
 
 func (g *Game) getDownloadedMods() *[]DownloadedMod {
@@ -565,7 +566,7 @@ func (g *Game) getEnabledMods(worldID int) ([]DownloadedMod, error) {
 	}
 
 	var modsID []DownloadedMod
-	for k := range mods {
+	for k, config := range mods {
 		modIDSlice := strings.Split(k, "-")
 		var modID int
 		if len(modIDSlice) < 2 {
@@ -578,7 +579,8 @@ func (g *Game) getEnabledMods(worldID int) ([]DownloadedMod, error) {
 			}
 		}
 		modsID = append(modsID, DownloadedMod{
-			ID: modID,
+			ID:      modID,
+			Enabled: config.Enabled,
 		})
 	}
 
@@ -635,57 +637,36 @@ func (g *Game) modDisable(modID int) error {
 }
 
 func (g *Game) deleteMod(modID int, fileURL string) error {
-	var ugc bool
+	// 先从 modoverrides 配置中移除该模组（防止重启后游戏自动重新下载）
+	_ = g.modDisable(modID)
 
-	if fileURL == "" {
-		ugc = true
-	}
+	// 同时清理 UGC 目录和旧版 mods 目录（不依赖 fileURL 判断）
+	g.acfMutex.Lock()
+	defer g.acfMutex.Unlock()
 
-	if ugc {
-		g.acfMutex.Lock()
-		defer g.acfMutex.Unlock()
+	acfID := strconv.Itoa(modID)
 
-		acfID := strconv.Itoa(modID)
-
-		for _, world := range g.worldSaveData {
-			gameAcfPath := fmt.Sprintf("dst/ugc_mods/%s/%s/appworkshop_322330.acf", g.clusterName, world.WorldName)
-
-			err := utils.EnsureFileExists(gameAcfPath)
-			if err != nil {
-				logger.Logger.Errorf("acf文件不存在, path: %v", gameAcfPath)
-				return err
-			}
-
+	for _, world := range g.worldSaveData {
+		// 清理 ACF 文件中的记录
+		gameAcfPath := fmt.Sprintf("dst/ugc_mods/%s/%s/appworkshop_322330.acf", g.clusterName, world.WorldName)
+		if utils.FileDirectoryExists(gameAcfPath) {
 			gameAcfParser, err := utils.NewParser(gameAcfPath)
-			if err != nil {
-				return err
-			}
-
-			err = gameAcfParser.RemoveWorkshopItemsInstalled(acfID)
-			if err != nil {
-				return err
-			}
-
-			writtenContent := strings.Join(gameAcfParser.Format(), "\n")
-			err = utils.TruncAndWriteFile(gameAcfPath, writtenContent)
-			if err != nil {
-				return err
-			}
-
-			modPath := fmt.Sprintf("dst/ugc_mods/%s/%s/content/322330/%d", g.clusterName, world.WorldName, modID)
-			err = utils.RemoveDir(modPath)
-			if err != nil {
-				logger.Logger.Errorf("删除模组失败, err: %v", err)
-				return err
+			if err == nil {
+				_ = gameAcfParser.RemoveWorkshopItemsInstalled(acfID)
+				writtenContent := strings.Join(gameAcfParser.Format(), "\n")
+				if writtenContent != "" {
+					_ = utils.TruncAndWriteFile(gameAcfPath, writtenContent)
+				}
 			}
 		}
-	} else {
-		err := utils.RemoveDir(fmt.Sprintf("dst/mods/workshop-%d", modID))
-		if err != nil {
-			logger.Logger.Errorf("删除模组失败, err: %v", err)
-			return err
-		}
+
+		// 清理 UGC 模组目录
+		modPath := fmt.Sprintf("dst/ugc_mods/%s/%s/content/322330/%d", g.clusterName, world.WorldName, modID)
+		_ = utils.RemoveDir(modPath)
 	}
+
+	// 清理旧版 dst/mods 目录
+	_ = utils.RemoveDir(fmt.Sprintf("dst/mods/workshop-%d", modID))
 
 	return nil
 }

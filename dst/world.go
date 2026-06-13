@@ -450,7 +450,7 @@ func (g *Game) getOnlinePlayerList(id int) ([]string, error) {
 
 var (
 	playerListPattern        = regexp.MustCompile(`playerlist 99999999 \[[0-9]+\] (KU_.+) <-@dmp@-> (.*) <-@dmp@-> (.+)?`)
-	playerDetailPattern      = regexp.MustCompile(`playerdetail 99999999 (KU_.+) <-@dmp@-> (.*) <-@dmp@-> (\w+) <-@dmp@-> (\d+)`)
+	playerDetailPattern      = regexp.MustCompile(`playerdetail 99999999 (KU_[^ ]+) <-@dmp@-> (.*?) <-@dmp@-> (.*?) <-@dmp@-> (\d+)`)
 	hostPattern              = regexp.MustCompile(`\[Host]`)
 )
 
@@ -519,16 +519,41 @@ func readPlayerDetailFromEnd(logPath string) ([]OnlinePlayerDetail, error) {
 
 	lines := strings.Split(string(buffer[:n]), "\n")
 
-	var linesAfterKeyword []string
-	keyword := "playerdetail 99999999"
+	// 向后搜索：找到包含 playerdetail 的 RemoteCommandInput 行作为块的起始标记
+	// 这样能收集到该命令输出的所有 playerdetail 行（而非只收集最后一个玩家）
+	var blockLines []string
+	cmdKeyword := "RemoteCommandInput"
+	detailKeyword := "playerdetail 99999999"
 	var found bool
 
 	for i := len(lines) - 1; i >= 0; i-- {
 		line := lines[i]
-		linesAfterKeyword = append(linesAfterKeyword, line)
-		if strings.Contains(line, keyword) {
+		blockLines = append(blockLines, line)
+		// 找到 RemoteCommandInput 且包含 playerdetail 命令，说明是我们要找的块
+		if strings.Contains(line, cmdKeyword) && strings.Contains(line, "playerdetail") {
 			found = true
 			break
+		}
+	}
+
+	if !found {
+		// 后备：如果没有 RemoteCommandInput，尝试找第一个 playerdetail 行
+		blockLines = nil
+		for i := len(lines) - 1; i >= 0; i-- {
+			line := lines[i]
+			blockLines = append(blockLines, line)
+			if strings.Contains(line, detailKeyword) {
+				// 继续向前收集连续的 playerdetail 行
+				for j := i - 1; j >= 0; j-- {
+					if strings.Contains(lines[j], detailKeyword) {
+						blockLines = append(blockLines, lines[j])
+					} else {
+						break
+					}
+				}
+				found = true
+				break
+			}
 		}
 	}
 
@@ -539,7 +564,7 @@ func readPlayerDetailFromEnd(logPath string) ([]OnlinePlayerDetail, error) {
 	var players []OnlinePlayerDetail
 	seen := map[string]bool{}
 
-	for _, line := range linesAfterKeyword {
+	for _, line := range blockLines {
 		if matches := playerDetailPattern.FindStringSubmatch(line); matches != nil {
 			if hostPattern.MatchString(line) {
 				continue

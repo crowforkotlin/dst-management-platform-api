@@ -1832,3 +1832,529 @@
 2026-06-13 02:36:45	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
 2026-06-13 02:41:14	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
 2026-06-13 02:41:14	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 02:56:01	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 02:57:14	[ERROR]	获取在线玩家详情失败: 世界不存在: 29
+2026-06-13 02:57:29	[ERROR]	获取在线玩家详情失败: 世界不存在: 29
+2026-06-13 02:57:44	[ERROR]	获取在线玩家详情失败: 世界不存在: 29
+2026-06-13 02:58:01	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 02:58:01	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 02:58:01	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 02:58:01	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 02:58:01	[INFO]	运行平台: darwin/arm64
+2026-06-13 02:58:01	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 02:58:01	[INFO]	DST配置目录权限检查通过
+2026-06-13 02:58:01	[INFO]	数据库连接成功
+2026-06-13 02:58:01	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 02:58:01	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 02:58:01	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 02:58:01	[INFO]	正在更新公网ip
+2026-06-13 02:58:14	[ERROR]	获取在线玩家详情失败: 世界不存在: 29
+2026-06-13 02:58:29	[ERROR]	获取在线玩家详情失败: 世界不存在: 29
+2026-06-13 02:58:44	[ERROR]	获取在线玩家详情失败: 世界不存在: 29
+2026-06-13 03:08:45	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 03:08:45	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 03:08:45	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 03:08:45	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 03:08:45	[INFO]	运行平台: darwin/arm64
+2026-06-13 03:08:45	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 03:08:45	[INFO]	DST配置目录权限检查通过
+2026-06-13 03:08:45	[INFO]	数据库连接成功
+2026-06-13 03:08:45	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 03:08:45	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 03:08:45	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 03:08:45	[INFO]	正在更新公网ip
+2026-06-13 03:08:50	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 03:09:05	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 03:19:59	[INFO]	当前世界正在运行中，跳过，世界ID：33
+2026-06-13 03:20:03	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 03:25:05	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 03:25:05	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 03:25:05	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 03:25:05	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 03:25:05	[INFO]	运行平台: darwin/arm64
+2026-06-13 03:25:05	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 03:25:05	[INFO]	DST配置目录权限检查通过
+2026-06-13 03:25:05	[INFO]	数据库连接成功
+2026-06-13 03:25:05	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 03:25:05	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 03:25:05	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 03:25:06	[INFO]	正在更新公网ip
+2026-06-13 03:40:36	[INFO]	正在更新模组 ID: 501385076
+2026-06-13 03:40:45	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 03:40:55	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 03:41:03	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 03:41:11	[INFO]	正在更新模组 ID: 3738012830
+2026-06-13 03:42:20	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 03:43:28	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 03:44:16	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 03:45:03	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 03:46:11	[INFO]	正在更新模组 ID: 352373173
+2026-06-13 03:47:18	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 03:48:26	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 03:49:34	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 03:50:42	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 03:59:33	[INFO]	正在更新模组 ID: 501385076
+2026-06-13 03:59:42	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 03:59:50	[INFO]	正在更新模组 ID: 352373173
+2026-06-13 03:59:55	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 03:59:58	[INFO]	正在更新模组 ID: 3738012830
+2026-06-13 04:00:07	[INFO]	正在更新模组 ID: 352373173
+2026-06-13 04:00:16	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 04:00:23	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 04:00:32	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 04:00:40	[INFO]	正在更新模组 ID: 3738012830
+2026-06-13 04:00:48	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 04:00:56	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 04:01:05	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 04:01:12	[INFO]	正在更新模组 ID: 501385076
+2026-06-13 04:01:20	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 04:01:27	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 04:01:37	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 04:01:45	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 04:01:52	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 04:01:59	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 04:02:06	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 04:02:14	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 04:02:21	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 04:02:29	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 04:02:38	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 04:02:45	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 04:03:00	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 04:03:08	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 04:40:18	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 04:40:48	[INFO]	正在更新模组 ID: 352373173
+2026-06-13 04:41:05	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 04:41:15	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 04:42:23	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 04:43:31	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 04:44:37	[INFO]	正在更新模组 ID: 3738012830
+2026-06-13 04:45:12	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 04:45:12	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 04:45:12	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 04:45:12	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 04:45:12	[INFO]	运行平台: darwin/arm64
+2026-06-13 04:45:12	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 04:45:12	[INFO]	DST配置目录权限检查通过
+2026-06-13 04:45:12	[INFO]	数据库连接成功
+2026-06-13 04:45:12	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 04:45:12	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 04:45:12	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 04:45:12	[INFO]	正在更新公网ip
+2026-06-13 04:50:40	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 04:50:40	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 04:50:40	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 04:50:40	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 04:50:40	[INFO]	运行平台: darwin/arm64
+2026-06-13 04:50:40	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 04:50:40	[INFO]	DST配置目录权限检查通过
+2026-06-13 04:50:40	[INFO]	数据库连接成功
+2026-06-13 04:50:40	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 04:50:40	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 04:50:40	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 04:50:41	[INFO]	正在更新公网ip
+2026-06-13 04:50:41	[ERROR]	发现世界运行异常，即将执行重启操作, world: 33
+2026-06-13 04:50:44	[ERROR]	发现世界运行异常，即将执行重启操作, world: 34
+2026-06-13 04:57:43	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 04:57:43	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 04:57:43	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 04:57:43	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 04:57:43	[INFO]	运行平台: darwin/arm64
+2026-06-13 04:57:43	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 04:57:43	[INFO]	DST配置目录权限检查通过
+2026-06-13 04:57:43	[INFO]	数据库连接成功
+2026-06-13 04:57:43	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 04:57:43	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 04:57:43	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 04:57:43	[INFO]	正在更新公网ip
+2026-06-13 05:05:59	[ERROR]	添加模组额外信息失败
+2026-06-13 05:07:57	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 05:07:57	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 05:07:57	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 05:07:57	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 05:07:57	[INFO]	运行平台: darwin/arm64
+2026-06-13 05:07:57	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 05:07:57	[INFO]	DST配置目录权限检查通过
+2026-06-13 05:07:57	[INFO]	数据库连接成功
+2026-06-13 05:07:57	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 05:07:57	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 05:07:57	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 05:07:57	[INFO]	正在更新公网ip
+2026-06-13 05:09:05	[WARN]	获取modinfo.lua中的configuration_options失败，可能是没有模组配置，返回空配置
+2026-06-13 05:15:15	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:15:30	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:15:45	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:16:00	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:16:15	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:16:27	[INFO]	[定时任务]：清理备份文件成功，共计清理备份文件0个
+2026-06-13 05:16:30	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:16:45	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:17:00	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:17:15	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:17:30	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:17:45	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:18:00	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:18:15	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:18:30	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:18:45	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:19:00	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:19:15	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:19:30	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:19:45	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:20:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:21:30	[INFO]	数据库连接成功
+2026-06-13 05:21:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:22:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:23:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:24:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:25:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:26:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:27:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:28:05	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 05:28:05	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 05:28:05	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 05:28:05	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 05:28:05	[INFO]	运行平台: darwin/arm64
+2026-06-13 05:28:05	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 05:28:05	[INFO]	DST配置目录权限检查通过
+2026-06-13 05:28:05	[INFO]	数据库连接成功
+2026-06-13 05:28:05	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 05:28:05	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 05:28:05	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 05:28:05	[INFO]	正在更新公网ip
+2026-06-13 05:28:31	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 05:30:20	[INFO]	模组下载后自动添加完成, modID: 2189004162, ModInOne: true, ModData长度: 9392
+2026-06-13 05:36:34	[INFO]	数据库连接成功
+2026-06-13 05:38:08	[INFO]	数据库连接成功
+2026-06-13 05:41:42	[INFO]	数据库连接成功
+2026-06-13 05:44:02	[INFO]	模组下载后自动添加完成, modID: 706633455, ModInOne: true, ModData长度: 5304
+2026-06-13 05:46:25	[INFO]	模组下载后自动添加完成, modID: 3742464934, ModInOne: true, ModData长度: 5435
+2026-06-13 05:49:30	[INFO]	模组下载后自动添加完成, modID: 3662224820, ModInOne: true, ModData长度: 5571
+2026-06-13 05:51:08	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 05:51:08	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 05:51:08	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 05:51:08	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 05:51:08	[INFO]	运行平台: darwin/arm64
+2026-06-13 05:51:08	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 05:51:08	[INFO]	DST配置目录权限检查通过
+2026-06-13 05:51:08	[INFO]	数据库连接成功
+2026-06-13 05:51:08	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 05:51:08	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 05:51:08	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 05:51:09	[INFO]	正在更新公网ip
+2026-06-13 05:56:53	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 05:57:08	[INFO]	正在更新模组 ID: 3742464934
+2026-06-13 05:57:11	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-13 05:57:20	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 05:57:33	[INFO]	正在更新模组 ID: 3662224820
+2026-06-13 05:57:38	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-13 05:57:41	[INFO]	新的WebSSH连接建立, 用户: crowforkotlin
+2026-06-13 05:57:46	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 05:57:59	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 05:58:02	[INFO]	WebSocket连接关闭 --> code: 1001, reason: 
+2026-06-13 05:58:12	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 05:58:24	[INFO]	正在更新模组 ID: 3739258809
+2026-06-13 05:58:36	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 05:59:00	[INFO]	正在更新模组 ID: 3738012830
+2026-06-13 05:59:21	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 05:59:46	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 06:00:00	[INFO]	[定时任务]：执行自动备份任务
+2026-06-13 06:00:00	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 06:00:00	[INFO]	[定时任务]：备份任务执行成功
+2026-06-13 06:00:20	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 06:00:33	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 06:06:39	[WARN]	获取modinfo.lua中的configuration_options失败，可能是没有模组配置，返回空配置
+2026-06-13 06:06:39	[INFO]	模组下载后自动添加完成, modID: 2832170369, ModInOne: true, ModData长度: 5010
+2026-06-13 06:07:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:07:17	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 06:07:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:07:30	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 06:07:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:07:44	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 06:07:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:07:58	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 06:08:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:08:11	[INFO]	正在更新模组 ID: 3662224820
+2026-06-13 06:08:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:08:23	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 06:08:35	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 06:08:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:08:48	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 06:08:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:09:01	[INFO]	正在更新模组 ID: 3739258809
+2026-06-13 06:09:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:09:13	[INFO]	正在更新模组 ID: 3742464934
+2026-06-13 06:09:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:09:26	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 06:09:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:09:38	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 06:09:51	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 06:09:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:10:05	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 06:10:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:10:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:10:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:10:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:11:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:11:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:11:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:11:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:12:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:12:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:12:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:12:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:13:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:13:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:13:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:13:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:14:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:14:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:14:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:14:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:15:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:15:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:15:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:15:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:16:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:16:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:16:37	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:16:52	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:17:07	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:17:22	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:17:52	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 06:17:52	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 06:17:52	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 06:17:52	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 06:17:52	[INFO]	运行平台: darwin/arm64
+2026-06-13 06:17:52	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 06:17:52	[INFO]	DST配置目录权限检查通过
+2026-06-13 06:17:52	[INFO]	数据库连接成功
+2026-06-13 06:17:52	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 06:17:52	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 06:17:52	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 06:17:53	[INFO]	正在更新公网ip
+2026-06-13 06:17:55	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:17:59	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 06:18:10	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:18:11	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 06:18:23	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 06:18:25	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:18:36	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 06:18:40	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:18:44	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 06:18:48	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 06:18:55	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:19:00	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 06:19:10	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:19:13	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 06:19:22	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 06:19:25	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:19:34	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 06:19:40	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:19:44	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 06:19:55	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:19:56	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 06:20:06	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 06:20:10	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:20:19	[INFO]	正在更新模组 ID: 3662224820
+2026-06-13 06:20:25	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:20:28	[INFO]	正在更新模组 ID: 3739258809
+2026-06-13 06:20:39	[INFO]	正在更新模组 ID: 3739258809
+2026-06-13 06:20:40	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:20:52	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 06:20:55	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:21:02	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 06:21:10	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:21:12	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 06:21:25	[ERROR]	获取在线玩家详情失败: FIFO 管道不存在: /Users/crowf/game/dst-management-platform-api/dmp_files/dst_pipes/Cluster_4_Master.fifo
+2026-06-13 06:21:25	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 06:21:35	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 06:21:42	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 06:21:42	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 06:21:42	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 06:21:42	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 06:21:42	[INFO]	运行平台: darwin/arm64
+2026-06-13 06:21:42	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 06:21:42	[INFO]	DST配置目录权限检查通过
+2026-06-13 06:21:42	[INFO]	数据库连接成功
+2026-06-13 06:21:42	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 06:21:42	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 06:21:42	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 06:21:43	[INFO]	正在更新公网ip
+2026-06-13 06:21:43	[ERROR]	发现世界运行异常，即将执行重启操作, world: 33
+2026-06-13 06:21:46	[ERROR]	发现世界运行异常，即将执行重启操作, world: 34
+2026-06-13 06:21:50	[INFO]	正在更新模组 ID: 3742464934
+2026-06-13 06:21:51	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:22:02	[INFO]	正在更新模组 ID: 3044756151
+2026-06-13 06:22:05	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:22:14	[INFO]	正在更新模组 ID: 3045668614
+2026-06-13 06:22:27	[INFO]	正在更新模组 ID: 3582815384
+2026-06-13 06:22:41	[INFO]	正在更新模组 ID: 1595631294
+2026-06-13 06:22:53	[INFO]	正在更新模组 ID: 3662224820
+2026-06-13 06:23:05	[INFO]	正在更新模组 ID: 3739258809
+2026-06-13 06:23:18	[INFO]	正在更新模组 ID: 3485293431
+2026-06-13 06:23:30	[INFO]	正在更新模组 ID: 378160973
+2026-06-13 06:23:44	[INFO]	正在更新模组 ID: 706633455
+2026-06-13 06:23:56	[INFO]	正在更新模组 ID: 2832170369
+2026-06-13 06:24:08	[INFO]	正在更新模组 ID: 3206595446
+2026-06-13 06:24:20	[INFO]	正在更新模组 ID: 3383078008
+2026-06-13 06:24:34	[INFO]	正在更新模组 ID: 3732511659
+2026-06-13 06:30:00	[INFO]	[定时任务]：执行自动重启任务
+2026-06-13 06:31:02	[INFO]	[定时任务]：自动重启任务执行成功
+2026-06-13 06:31:05	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:31:11	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:31:15	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:31:20	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:40:35	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:41:38	[INFO]	[定时任务]：开始检测游戏是否需要更新
+2026-06-13 06:41:38	[INFO]	[定时任务]：检测到游戏需要更新
+2026-06-13 06:41:38	[INFO]	[定时任务]：开始执行游戏更新
+2026-06-13 06:41:38	[INFO]	[定时任务]：游戏更新结束
+2026-06-13 06:43:05	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:43:42	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:44:20	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:44:27	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:45:53	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:45:53	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:46:38	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:46:38	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:47:24	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:47:24	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:47:43	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:47:43	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:48:32	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:48:32	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:48:50	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:48:51	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:48:52	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:49:52	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:49:52	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:50:35	[ERROR]	获取在线玩家详情失败: playerdetail not found
+2026-06-13 06:51:06	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:51:06	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 06:51:58	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 06:51:58	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 12:21:43	[INFO]	正在更新公网ip
+2026-06-13 14:28:58	[INFO]	macOS: 检测到 DST 安装: /Users/crowf/Library/Application Support/Steam/steamapps/common/Don't Starve Together Dedicated Server
+2026-06-13 14:28:58	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64 wrapper
+2026-06-13 14:28:58	[INFO]	macOS: 已创建 dst/bin64/dontstarve_dedicated_server_nullrenderer_x64_luajit wrapper
+2026-06-13 14:28:58	[INFO]	macOS: DST 运行时环境检测完成
+2026-06-13 14:28:58	[INFO]	运行平台: darwin/arm64
+2026-06-13 14:28:58	[INFO]	DST配置目录: /Users/crowf/Documents/Klei/DoNotStarveTogether
+2026-06-13 14:28:58	[INFO]	DST配置目录权限检查通过
+2026-06-13 14:28:58	[INFO]	数据库连接成功
+2026-06-13 14:28:58	[INFO]	定时任务[onlinePlayerGet]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[systemMetricsGet]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[gameUpdate]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[InternetIPUpdate]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[ModDownloadClean]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[GameServerVersionUpdate]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[4-0-Backup]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[4-BackupClean]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[4-Restart]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[4-Keepalive]注册成功
+2026-06-13 14:28:58	[INFO]	定时任务[4-8a24081fbfad4d249c096fd8ef0a8bbd-Announce]注册成功
+2026-06-13 14:28:58	[ERROR]	定时通知失败, err: 执行失败
+2026-06-13 14:28:59	[INFO]	正在更新公网ip
+2026-06-13 15:01:54	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: antlion
+2026-06-13 15:01:54	[WARN]	坐标获取失败，跳过, err: 解析x坐标失败, prefab: beequeenhivegrown
+2026-06-13 15:48:20	[INFO]	token有效期小于阈值，刷新token
+2026-06-13 15:48:20	[INFO]	token有效期小于阈值，刷新token

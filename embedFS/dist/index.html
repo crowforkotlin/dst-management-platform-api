@@ -357,7 +357,12 @@
       const btn = document.getElementById('dmp-mod-btn');
       btn.disabled = true; btn.textContent = '\u66f4\u65b0\u4e2d...';
       try {
-        const data = await apiPost('/v3/mod/update_all', {roomID: getRoomID()});
+        const res = await fetch('/v3/mod/update_all', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json','X-DMP-TOKEN':getToken()},
+          body: JSON.stringify({roomID: getRoomID()})
+        });
+        const data = await res.json();
         showToast(data.message || '\u5b8c\u6210', data.code === 200);
         btn.textContent = data.code === 200 ? '\u2705 \u5b8c\u6210' : '\u274c \u5931\u8d25';
       } catch(e) { showToast('\u66f4\u65b0\u5931\u8d25', false); btn.textContent = '\u274c \u5931\u8d25'; }

@@ -115,6 +115,23 @@ func (h *Handler) downloadPost(c *gin.Context) {
 		}
 	}
 
+	// 新下载的模组自动添加到 modoverrides 配置并启用（更新操作不需要）
+	if !reqForm.Update {
+		ugc := reqForm.FileURL == ""
+		if len(*worlds) > 0 {
+			if enableErr := game.ModEnable((*worlds)[0].ID, reqForm.ID, ugc); enableErr != nil {
+				logger.Logger.Errorf("下载后自动启用模组失败, modID: %d, err: %v", reqForm.ID, enableErr)
+			}
+			if roomErr := h.roomDao.UpdateRoom(room); roomErr != nil {
+				logger.Logger.Errorf("下载后更新房间数据库失败, err: %v", roomErr)
+			}
+			if worldsErr := h.worldDao.UpdateWorlds(worlds); worldsErr != nil {
+				logger.Logger.Errorf("下载后更新世界数据库失败, err: %v", worldsErr)
+			}
+			logger.Logger.Infof("模组下载后自动添加完成, modID: %d, ModInOne: %v, ModData长度: %d", reqForm.ID, room.ModInOne, len(room.ModData))
+		}
+	}
+
 	if reqForm.Update {
 		c.JSON(http.StatusOK, gin.H{"code": 200, "message": reqForm.Name + " " + message.Get(c, "update success"), "data": nil})
 	} else {
@@ -455,6 +472,10 @@ func (h *Handler) deletePost(c *gin.Context) {
 		return
 	}
 
+	// 保存更新后的 modoverrides 配置到数据库（deleteMod 内部调用了 modDisable 修改了 ModData）
+	_ = h.roomDao.UpdateRoom(room)
+	_ = h.worldDao.UpdateWorlds(worlds)
+
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": message.Get(c, "delete success"), "data": nil})
 }
 
@@ -537,13 +558,17 @@ func (h *Handler) updateAllPost(c *gin.Context) {
 		if mod.ID == 0 {
 			continue // 跳过 client_mods_disabled
 		}
+		if !mod.Enabled {
+			logger.Logger.Infof("跳过已禁用的模组 ID: %d", mod.ID)
+			continue // 跳过已禁用的模组
+		}
 
 		logger.Logger.Infof("正在更新模组 ID: %d", mod.ID)
 
 		// 空 FileURL 表示 UGC 模组，从 Steam 工坊下载
-		err, _ := game.DownloadMod(mod.ID, "")
-		if err != nil {
-			logger.Logger.Errorf("更新模组失败: ID: %d, err: %v", mod.ID, err)
+		err, modSize := game.DownloadMod(mod.ID, "")
+		if err != nil || modSize == 0 {
+			logger.Logger.Errorf("更新模组失败: ID: %d, err: %v, modSize: %d", mod.ID, err, modSize)
 			failCount++
 			failIDs = append(failIDs, mod.ID)
 		} else {
